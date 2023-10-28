@@ -18,5 +18,4 @@ pipex: Pipex is a program that allows you to redirect the output of one process 
  Philosophers: The Philosophers project simulates the classic "Dining Philosophers" problem, where multiple philosophers must share forks to eat. It highlights concepts of concurrency and synchronization in parallel programming.
  
 minishell: Minishell involves creating a minimalist command-line shell in C. It allows you to execute commands and programs, manage input/output, and implement basic shell functionality.
-
 a collaboration whit @ttragian.
