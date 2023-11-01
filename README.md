@@ -1,5 +1,5 @@
 # 42
-All my projects from the common core at school 42.
+All my projects from  42 school. 
 
 Libft: The Libft project involves creating your own custom C library, with functions for managing strings, arrays, linked lists, and more. This library serves as the foundation for many subsequent projects.
 
