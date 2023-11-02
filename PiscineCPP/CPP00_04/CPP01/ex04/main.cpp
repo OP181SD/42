@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 10:21:39 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/01 11:19:41 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/02 13:24:30 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ int	main(int argc, char **argv)
 	std::string filename(argv[1]);
 	std::string s1(argv[2]);
 	std::string s2(argv[3]);
+	if (s1.empty() || s2.empty())
+	{
+		std::cerr << "S1 or S2 are empty" << std::endl;
+		return (1);
+	}
 	if (!std::ifstream(filename.c_str()))
 	{
 		std::cerr << "Error: The input file does not exist." << std::endl;
