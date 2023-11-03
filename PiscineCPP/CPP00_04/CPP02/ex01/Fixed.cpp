@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 22:50:58 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/02 13:33:12 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/03 17:59:40 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,14 @@ Fixed::Fixed(const Fixed &other)
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
+Fixed &Fixed::operator=(const Fixed &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	this->_value_fixed = getRawBits();
 
+	return (*this);
+}
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
@@ -40,6 +47,11 @@ Fixed::Fixed(float const constat_float)
 	: _value_fixed(roundf(constat_float * (1 << num_bits_frac_part)))
 {
 	std::cout << "Float constructor called" << std::endl;
+}
+
+int Fixed::getRawBits() const
+{
+	return (_value_fixed);
 }
 
 float Fixed::toFloat() const
