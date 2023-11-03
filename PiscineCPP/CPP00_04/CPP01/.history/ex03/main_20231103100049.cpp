@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 16:53:13 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/03 10:12:36 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/10/25 19:32:19 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,31 @@
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
-int	main(void)
-{
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	return (0);
+
+int main() {
+    // Create a Weapon
+    Weapon club = Weapon("crude spiked club");
+
+    // Create HumanA (Bob) and make him attack
+    HumanA bob("Bob", club);
+    bob.attack();
+
+    // Update the weapon type
+    club.setType("some other type of club");
+
+    // Bob attacks again with the updated weapon
+    bob.attack();
+
+    // Create HumanB (Jim) and make him attack
+    HumanB jim("Jim");
+    jim.setWeapon(club);
+    jim.attack();
+
+    // Update the weapon type again
+    club.setType("yet another type of club");
+
+    // Jim attacks again with the updated weapon
+    jim.attack();
+
+    return 0;
 }

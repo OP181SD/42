@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:13:58 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/03 10:15:36 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/03 10:13:49 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ private:
     std::string _type;
 public:
     std::string getType(void);
-    void setType(std::string type);
+    void setType( std::string& type);
     Weapon(std::string type);
     ~Weapon();
 };
