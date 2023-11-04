@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 22:50:58 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/03 17:59:40 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/04 14:06:46 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ Fixed::Fixed(const Fixed &other)
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
+
 Fixed &Fixed::operator=(const Fixed &rhs)
 {
-	if (this == &rhs)
-		return (*this);
-	this->_value_fixed = getRawBits();
-
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &rhs)
+		_value_fixed= rhs._value_fixed;
 	return (*this);
 }
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
@@ -39,7 +40,7 @@ Fixed::~Fixed()
 
 Fixed::Fixed(int const constant_integer)
 	: _value_fixed(constant_integer << num_bits_frac_part)
-{
+{ 
 	std::cout << "Int constructor called" << std::endl;
 }
 
@@ -56,16 +57,18 @@ int Fixed::getRawBits() const
 
 float Fixed::toFloat() const
 {
-	return (static_cast<float>(_value_fixed)
-		/ static_cast<float>(1 << num_bits_frac_part));
+	return (static_cast<float>(_value_fixed) / (1 << num_bits_frac_part));
 }
 
 int Fixed::toInt() const
 {
-	return (static_cast<int>(_value_fixed)
-		/ static_cast<int>(1 << num_bits_frac_part));
+        return (_value_fixed >> num_bits_frac_part);
 }
 
+void Fixed::setRawBits(const int raw)
+{
+	this->_value_fixed = raw;
+}
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
 {
 	os << fixed.toFloat();
