@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 22:39:26 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/04 10:24:21 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:01:03 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ class Fixed
 	int getRawBits(void) const;
 	// Setters
 	void setRawBits(const int raw);
-	// Surcharge d'operateur
-	friend std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
 	private:
 		int _value_fixed;
 		int const static num_bits_frac_part = 8;
 };
+
+// Surcharge d'operateur
+std::ostream &operator<<(std::ostream &os, const Fixed &fixed);

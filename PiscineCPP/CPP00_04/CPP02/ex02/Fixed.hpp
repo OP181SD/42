@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:00:14 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/05 10:55:04 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:00:52 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,9 @@ public:
 	// min max 
 	static Fixed min (Fixed &a, Fixed &b);
 	static Fixed max (Fixed &a, Fixed &b);
-
-	friend std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
 private:
 		int _value_fixed;
 		int const static num_bits_frac_part = 8;
 };
 
+std::ostream &operator<<(std::ostream &os, const Fixed &fixed);

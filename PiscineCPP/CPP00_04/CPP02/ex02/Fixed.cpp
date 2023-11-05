@@ -6,35 +6,23 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:00:02 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/05 10:57:09 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:00:27 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed() : _value_fixed(0)
-{
-    
-}
+Fixed::Fixed() : _value_fixed(0) {}
 
 Fixed::Fixed(int const constant_interger) 
-: _value_fixed(constant_interger << num_bits_frac_part)
-{
-    
-}
+: _value_fixed(constant_interger << num_bits_frac_part) {}
+
 Fixed::Fixed(float const constant_float) 
-: _value_fixed(int(roundf(constant_float * (1 << num_bits_frac_part))))
-{
-    
-}
+: _value_fixed(int(roundf(constant_float * (1 << num_bits_frac_part)))) {}
 
-Fixed::Fixed(const Fixed& other) : _value_fixed(other._value_fixed) {
+Fixed::Fixed(const Fixed& other) : _value_fixed(other._value_fixed) {}
 
-}
-
-Fixed::~Fixed()
-{
-}
+Fixed::~Fixed() {}
 
 Fixed &Fixed::operator=(const Fixed &rhs)
 {
@@ -86,7 +74,7 @@ Fixed Fixed::operator-(const Fixed& other)
     Fixed result;
 
     result._value_fixed = this->_value_fixed - other._value_fixed;
-     return (result);
+    return (result);
 }
 
 Fixed Fixed::operator*(const Fixed& other)
