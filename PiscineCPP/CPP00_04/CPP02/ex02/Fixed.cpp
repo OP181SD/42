@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:00:02 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/04 15:59:52 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:57:09 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 
 Fixed::Fixed() : _value_fixed(0)
 {
+    
+}
+
+Fixed::Fixed(int const constant_interger) 
+: _value_fixed(constant_interger << num_bits_frac_part)
+{
+    
+}
+Fixed::Fixed(float const constant_float) 
+: _value_fixed(int(roundf(constant_float * (1 << num_bits_frac_part))))
+{
+    
+}
+
+Fixed::Fixed(const Fixed& other) : _value_fixed(other._value_fixed) {
 
 }
 
@@ -21,76 +36,74 @@ Fixed::~Fixed()
 {
 }
 
-Fixed::Fixed(int const constant_interger) :_value_fixed(constant_interger << num_bits_frac_part)
-{
-}
-
-
-Fixed::Fixed(float const constant_float) :_value_fixed(roundf(constant_float) * (1 << num_bits_frac_part))
-{
-
-}
-
-Fixed::Fixed(const Fixed &other) :_value_fixed(other._value_fixed)
-{
-}
-
 Fixed &Fixed::operator=(const Fixed &rhs)
 {
 	if (this != &rhs)
-		_value_fixed = rhs._value_fixed;
+		_value_fixed = rhs.getRawBits();
 	return (*this);
 }
 
-bool Fixed::operator>(const Fixed &other) const 
+bool Fixed::operator>(const Fixed &other) 
 {
 	return (this->_value_fixed > other._value_fixed);
 }
 
-bool Fixed::operator<(const Fixed &other) const
+bool Fixed::operator<(const Fixed &other)
 {
 	return (this->_value_fixed < other._value_fixed);
 }
 
-bool Fixed::operator>=(const Fixed &other) const
+bool Fixed::operator>=(const Fixed &other)
 {
 	return (this->_value_fixed >= other._value_fixed);
 }
 
-bool Fixed::operator<=(const Fixed &other) const 
+bool Fixed::operator<=(const Fixed &other)
 {
 	return (this->_value_fixed <= other._value_fixed);
 }
 
-bool Fixed::operator==(const Fixed &other) const
+bool Fixed::operator==(const Fixed &other)
 {
 	return (this->_value_fixed == other._value_fixed);
 }
 
-bool Fixed::operator!=(const Fixed &other) const
+bool Fixed::operator!=(const Fixed &other) 
 {
 	return (this->_value_fixed != other._value_fixed);
 }
 
-int Fixed::operator+(const Fixed &other) const
+Fixed Fixed::operator+(const Fixed& other)
 {
-	return (this->_value_fixed + other._value_fixed);
+   Fixed result;
+
+   result._value_fixed = this->_value_fixed + other._value_fixed;
+    return (result);
 }
 
-int Fixed::operator-(const Fixed &other) const
+Fixed Fixed::operator-(const Fixed& other)
 {
-	return(this->_value_fixed - other._value_fixed);
+    Fixed result;
+
+    result._value_fixed = this->_value_fixed - other._value_fixed;
+     return (result);
 }
 
-int Fixed::operator*(const Fixed &other) const
+Fixed Fixed::operator*(const Fixed& other)
 {
-	return (this->_value_fixed * other._value_fixed);
+    Fixed result;
+
+    result._value_fixed = this->_value_fixed * (other._value_fixed >> num_bits_frac_part);
+    return (result);
 }
 
-int Fixed::operator/(const Fixed &other) const 
+Fixed Fixed::operator/(const Fixed& other)
 {
-	return (this->_value_fixed / other._value_fixed);
-}
+    Fixed result;
+
+    result._value_fixed = this->_value_fixed / (other._value_fixed >> num_bits_frac_part);
+    return (result);
+}  
 
 Fixed Fixed::operator++(int)
 {
@@ -118,7 +131,7 @@ Fixed &Fixed::operator--()
 	return (*this);
 }
 
-int Fixed::GetRawBits(void) const
+int Fixed::getRawBits(void) const
 {
 	return (_value_fixed);
 }

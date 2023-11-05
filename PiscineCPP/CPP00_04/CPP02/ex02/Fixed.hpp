@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:00:14 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/04 15:37:16 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:55:04 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,24 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 	// Les 6 opérateur de comparaison : >, <, >=, <=, == et !=.
-	bool operator>(const Fixed &other) const;
-	bool operator<(const Fixed &other) const;
-	bool operator>=(const Fixed &other) const;
-	bool operator<=(const Fixed &other) const;
-	bool operator==(const Fixed &other) const;
-	bool operator!=(const Fixed &other) const;
+	bool operator>(const Fixed &other);
+	bool operator<(const Fixed &other);
+	bool operator>=(const Fixed &other);
+	bool operator<=(const Fixed &other);
+	bool operator==(const Fixed &other);
+	bool operator!=(const Fixed &other);
 	// Les 4 opérateurs de arithmétiques : +, -, *, et /.
-	int operator+(const Fixed &other) const;
-	int operator-(const Fixed &other) const;
-	int operator*(const Fixed &other) const;
-	int operator/(const Fixed &other) const;
+	Fixed operator+(const Fixed &other);
+	Fixed operator-(const Fixed &other);
+	Fixed operator*(const Fixed &other);
+	Fixed operator/(const Fixed &other);
 	// Les 4 opérateurs d’incrémentation et de décrémentation
 	Fixed  operator++(int);
 	Fixed& operator++();
     Fixed  operator--(int);
     Fixed& operator--();
 	// Getters
-	int GetRawBits(void) const;
+	int getRawBits(void) const;
 	// Setters
 	void setRawBits(const int raw);
 

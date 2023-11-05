@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 22:50:58 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/04 14:06:46 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:11:57 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int Fixed::getRawBits() const
 
 float Fixed::toFloat() const
 {
-	return (static_cast<float>(_value_fixed) / (1 << num_bits_frac_part));
+	return ((float)(_value_fixed) / (1 << num_bits_frac_part));
 }
 
 int Fixed::toInt() const
