@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:00:14 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/05 11:00:52 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/06 10:13:33 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <math.h>
 
 #pragma once 
 
@@ -49,7 +50,6 @@ public:
 	int getRawBits(void) const;
 	// Setters
 	void setRawBits(const int raw);
-
 	// min max const
 	static Fixed min(const Fixed &a, const Fixed &b);
 	static Fixed max (const Fixed &a, const Fixed &b);
