@@ -6,11 +6,13 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:03:42 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 09:21:57 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/10 10:33:53 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+
+#pragma once
 
 class ClapTrap
 {

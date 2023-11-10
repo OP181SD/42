@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:03:32 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 09:57:23 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/10 10:35:43 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ ClapTrap::ClapTrap() :
 
 ClapTrap::ClapTrap(std::string name) : 
     Name(name), HitPoints(100), EnergyPoints(50), AttackDamage(20)
-{	
+{
+	  std::cout << "Constructeur de copie de ClapTrap appelé" << std::endl;	
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
