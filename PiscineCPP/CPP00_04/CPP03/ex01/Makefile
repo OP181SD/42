@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/05 16:15:17 by yassine           #+#    #+#              #
-#    Updated: 2023/11/05 16:17:12 by yassine          ###   ########.fr        #
+#    Created: 2023/11/05 11:03:03 by yassine           #+#    #+#              #
+#    Updated: 2023/11/10 09:56:43 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLAPTRAP = ClapTrap
+CLAPTRAP = ScavTrap
 
 CC = clang++
 
@@ -21,7 +21,7 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
 SRCS = ClapTrap.cpp \
-	   ScavTrap.cpp \
+		ScavTrap.cpp \
 	   main.cpp 
 
 OBJS = $(SRCS:%.cpp=%.o)

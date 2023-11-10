@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:03:42 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/05 13:54:22 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/10 09:21:57 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string Name;
 	int HitPoints;
 	int EnergyPoints;
