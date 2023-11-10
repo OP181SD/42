@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:13:30 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 10:58:42 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/10 11:00:37 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	AttackDamage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
+ScavTrap::ScavTrap(const ScavTrap &other)
 {
 	std::cout << "Constructeur de copie de ScavTrap appelé" << std::endl;
+	*this = other;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &rhs)
