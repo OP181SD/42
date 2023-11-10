@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/05 15:51:17 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 09:07:01 by yassine          ###   ########.fr       */
+/*   Created: 2023/11/05 11:03:42 by yassine           #+#    #+#             */
+/*   Updated: 2023/11/10 12:30:13 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include <iostream>
 
-int main()
+#pragma once 
+
+class ClapTrap
 {
-    ClapTrap clapTrap("ClapTrap");
-    std::string target = "BadTrap";
-    clapTrap.attack(target);
-    clapTrap.takeDamage(3);
-    clapTrap.beRepaired(2);
-    return 0;
-}
+protected:
+	std::string Name;
+	int HitPoints;
+	int EnergyPoints;
+	int AttackDamage;
+public:
+	ClapTrap();
+	ClapTrap(std::string name);
+	ClapTrap(const ClapTrap &other);
+	ClapTrap& operator=(const ClapTrap& rhs);
+	~ClapTrap();
+	void attack(const std::string& target);
+	void takeDamage(unsigned int amount);
+	void beRepaired(unsigned int amount);
+};
+

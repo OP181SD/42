@@ -6,36 +6,33 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:03:32 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 17:22:23 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/10 17:16:13 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() : 
-    Name("ClapTrap"), HitPoints(100), EnergyPoints(50), AttackDamage(20)
+    Name("ClapTrap"), HitPoints(100), EnergyPoints(100), AttackDamage(30)
 {
     std::cout << "Constructeur par défaut de ClapTrap appelé" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : 
-    Name(name), HitPoints(100), EnergyPoints(50), AttackDamage(20)
-{
-	  std::cout << "Constructeur de ClapTrap appelé" << std::endl;	
-	  
-}
+    Name(name), HitPoints(100), EnergyPoints(30), AttackDamage(30)
+{}
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	std::cout << "Constructeur de copie de ClapTrap appelé" << std::endl;	
-   *this = other;
+	std::cout << "Constructeur de copie de ClapTrap appelé" << std::endl;
+	*this = other;
 }
 
-ClapTrap& ClapTrap::operator=(const ClapTrap &rhs)
+ClapTrap &ClapTrap::operator=(const ClapTrap &rhs)
 {
     if (this != &rhs) 
     {
-    	Name = rhs.Name;
+        Name = rhs.Name;
         HitPoints = rhs.HitPoints;
         EnergyPoints = rhs.EnergyPoints;
         AttackDamage = rhs.AttackDamage;
