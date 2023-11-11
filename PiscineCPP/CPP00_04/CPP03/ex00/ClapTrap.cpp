@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:03:32 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 09:09:19 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/11 09:30:42 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ ClapTrap::ClapTrap(std::string name) :
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-    Name = other.Name;
-    HitPoints = other.HitPoints;
-    EnergyPoints = other.EnergyPoints;
-    AttackDamage = other.AttackDamage;
+	std::cout << "Constructeur de copie de ClapTrap appelé" << std::endl;	
+   *this = other;
 }
+
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &rhs)
 {
