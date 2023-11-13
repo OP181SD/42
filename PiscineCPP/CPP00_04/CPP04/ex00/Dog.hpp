@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:03:44 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 18:41:40 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:24:24 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ class Dog : public Animal
 public:
 	Dog();
 	Dog(std::string animalType);
-	Dog(const Animal &other);
-	Dog& operator=(const Animal& rhs);
+	Dog(const Dog &other);
+	Dog& operator=(const Dog& rhs);
 	void makeSound() const;
 	~Dog();
 };

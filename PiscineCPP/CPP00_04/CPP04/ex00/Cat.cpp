@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:53:57 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 18:45:41 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:52:37 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat()
+	: Animal("Cat ")
 {
 	std::cout << "Constructeur par défaut de Cat." << std::endl;
 }
@@ -22,21 +23,18 @@ Cat::~Cat()
 	std::cout << "Destructeur de Cat." << std::endl;
 }
 
-Cat::Cat(std::string animalType) : Animal(animalType)
-{
-	std::cout << "Constructeur Cat qui hérite de la class Animal" << std::endl;
-}
 
-Cat::Cat(const Animal &other) : Animal(other) 
+Cat::Cat(const Cat &other)
 {
 	std::cout << "Constructeur de copie de Cat.\n";
+	*this = other;
 }
 
-Cat& Cat::operator=(const Animal& rhs)
+Cat &Cat::operator=(const Cat &rhs)
 {
 	std::cout << "Opérateur d'assignation appelé.";
 	if (this != &rhs)
-		Animal::operator=(rhs);
+		this->type = rhs.type;
 	return (*this);
 }
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:53:50 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 18:49:34 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:50:26 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog() : Animal("Dog ")
 {
 	std::cout << "Constructeur par défaut de Dog." << std::endl;
 }
@@ -22,21 +22,17 @@ Dog::~Dog()
 	std::cout << "Destructeur de Dog." << std::endl;
 }
 
-Dog::Dog(std::string animalType) : Animal(animalType)
-{
-	std::cout << "Constructeur Dog qui hérite de la class Animal" << std::endl;
-}
-
-Dog::Dog(const Animal &other) : Animal(other) 
+Dog::Dog(const Dog &other)
 {
 	std::cout << "Constructeur de copie de Dog.\n";
+	*this = other;
 }
 
-Dog& Dog::operator=(const Animal& rhs)
+Dog& Dog::operator=(const Dog& rhs)
 {
 	std::cout << "Opérateur d'assignation appelé.";
 	if (this != &rhs)
-		Animal::operator=(rhs);
+	this->type = rhs.type;
 	return (*this);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:58:00 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 18:41:50 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:47:46 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 class Cat : public Animal
 {
-public:
+  public:
 	Cat();
-	Cat(std::string animalType);
-	Cat(const Animal &other);
-	Cat& operator=(const Animal& rhs);
-	void makeSound() const;
+	Cat(const Cat &other);
+	Cat &operator=(const Cat &rhs);
 	~Cat();
+	void makeSound() const;
 };

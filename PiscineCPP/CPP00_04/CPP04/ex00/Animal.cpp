@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:55:33 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/10 18:48:52 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/13 12:20:37 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal()
+Animal::Animal() : type("Animal")
 {
 	std::cout << "Constructeur par défaut de Animal." << std::endl;
 }
@@ -22,7 +22,8 @@ Animal::~Animal()
 	std::cout << "Destructeur de Animal." << std::endl;
 }
 
-Animal::Animal(std::string animalType) : type(animalType)
+Animal::Animal(std::string animalType)
+	: type(animalType)
 {
 	std::cout << "Constructeur avec le type de l'Animal." << std::endl;
 }
@@ -33,19 +34,23 @@ Animal::Animal(const Animal &other)
 	*this = other;
 }
 
-Animal& Animal::operator=(const Animal& rhs)
+Animal &Animal::operator=(const Animal &rhs)
 {
 	if (this != &rhs)
-        type = rhs.type;
+		type = rhs.type;
 	return (*this);
-}
-
-void Animal::makeSound() const
-{
-	std::cout << "Meoow\n";
 }
 
 std::string Animal::getType() const
 {
 	return (type);
+}
+void Animal::setType(std::string type)
+{
+	this->type = type;
+}
+
+void Animal::makeSound() const
+{
+	std::cout << "Le son d'un animal.\n";
 }
