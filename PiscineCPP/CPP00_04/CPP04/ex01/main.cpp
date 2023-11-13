@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:52:49 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 19:32:00 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 21:00:16 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,16 @@ int main(void)
     
     delete j;
     delete i;
+
+	std::cout << "\n";
+	std::cout << "\n";
+
+    Dog moad;
+    {
+        Dog tmp = moad;
+    	std::cout << "\n";
+    }
+	std::cout << "----------------------\n";
+
     return 0;
 }

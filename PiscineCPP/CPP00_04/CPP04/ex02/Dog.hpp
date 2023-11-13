@@ -6,11 +6,11 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:03:44 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 17:49:54 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:20:06 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AAnimal.hpp"
+#include "Animal.hpp"
 #include "Brain.hpp"
 
 class Dog : public Animal

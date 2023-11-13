@@ -6,14 +6,13 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:53:57 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 10:52:37 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 20:21:51 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat()
-	: Animal("Cat ")
+Cat::Cat() : Animal("Cat ")
 {
 	std::cout << "Constructeur par défaut de Cat." << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:22:34 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/13 18:12:26 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 20:12:16 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #pragma once
 
-class WrongCat
+class WrongCat : public WrongAnimal
 {
   protected:
 	std::string type;

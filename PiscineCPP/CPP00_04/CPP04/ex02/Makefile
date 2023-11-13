@@ -6,7 +6,7 @@
 #    By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 17:43:49 by yassine           #+#    #+#              #
-#    Updated: 2023/11/13 17:49:37 by yasaidi          ###   ########.fr        #
+#    Updated: 2023/11/13 17:22:10 by yasaidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
 SRCS = main.cpp \
-       AAnimal.cpp \
+       Animal.cpp \
        Dog.cpp \
        Cat.cpp \
 	   WrongAnimal.cpp \

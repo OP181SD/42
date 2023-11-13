@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:52:49 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 19:32:41 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 20:22:54 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ int	main(void)
 	std::cout << "le WrongAnimal et le WrongCat : \n";
 	std::cout << "----------------------------------------------\n";
 
-	const WrongCat *wrongcat = new WrongCat();
-	const WrongAnimal *k = new WrongAnimal();
+	
+	const WrongAnimal *wrongcat = new WrongCat();
+	const WrongAnimal *wronganimal = new WrongAnimal();
 
+	std::cout << "\n";
 	std::cout << "Création d'un WrongCat : " << wrongcat->getType() << std::endl;
-	std::cout << "Création d'un WrongAnimal :" << k->getType() << std::endl;
+	std::cout << "Création d'un WrongCat : " << wronganimal->getType() << std::endl;
 
 	std::cout << "\nAppels de makeSound :\n";
 	std::cout << "---------------------\n";
@@ -52,12 +54,14 @@ int	main(void)
 	std::cout << "WrongCat : ";
 	wrongcat->makeSound();
 	std::cout << "WrongAnimal : ";
-	k->makeSound();
+	wronganimal->makeSound();
+
+	std::cout << "\n";
 
 	delete meta;
 	delete i;
 	delete j;
-	delete k;
 	delete wrongcat;
+	delete wronganimal;
 	return (0);
 }
