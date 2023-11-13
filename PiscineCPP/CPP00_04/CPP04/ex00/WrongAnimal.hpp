@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 17:55:38 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 14:25:25 by yasaidi          ###   ########.fr       */
+/*   Created: 2023/11/13 14:08:23 by yasaidi           #+#    #+#             */
+/*   Updated: 2023/11/13 14:23:27 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 #pragma once
 
-class Animal
+class WrongAnimal
 {
   protected:
 	std::string type;
 
   public:
-	Animal();
-	Animal(std::string animalType);
-	Animal(const Animal &other);
-	Animal &operator=(const Animal &rhs);
-	virtual void makeSound() const;
-	virtual ~Animal();
+	WrongAnimal();
+	WrongAnimal(std::string WrongAnimal);
+	WrongAnimal(const WrongAnimal &other);
+	WrongAnimal &operator=(const WrongAnimal &rhs);
+	~WrongAnimal();
+	void makeSound() const;
 	std::string getType() const;
 };

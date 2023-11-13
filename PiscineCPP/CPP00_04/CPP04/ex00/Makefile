@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
+#    By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 17:43:49 by yassine           #+#    #+#              #
-#    Updated: 2023/11/10 18:45:13 by yassine          ###   ########.fr        #
+#    Updated: 2023/11/13 14:11:01 by yasaidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ RM = rm -rf
 SRCS = main.cpp \
        Animal.cpp \
        Dog.cpp \
-       Cat.cpp
+       Cat.cpp \
+	   WrongAnimal.cpp \
+	   WrongCat.cpp 
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM_NAME)
