@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:03:44 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 15:59:36 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:20:06 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Dog : public Animal
 {
   private:
-  Brain *_brain;
+  Brain *DogBrain;
   public:
 	Dog();
 	Dog(const Dog &other);

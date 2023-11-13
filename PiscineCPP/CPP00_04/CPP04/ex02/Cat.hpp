@@ -6,11 +6,11 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:58:00 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 17:20:45 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:49:46 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 class Cat : public Animal
