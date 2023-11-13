@@ -6,11 +6,12 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:52:49 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 15:56:53 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:21:22 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
@@ -40,7 +41,7 @@ int	main(void)
 	std::cout << "----------------------------------------------\n";
 	std::cout << "Remplacement par le WrongAnimal et le WrongCat : \n";
 	std::cout << "----------------------------------------------\n";
-	
+
 	const WrongCat *wrongcat = new WrongCat();
 	const WrongAnimal *k = new WrongAnimal();
 
@@ -55,10 +56,18 @@ int	main(void)
 	std::cout << "WrongAnimal : ";
 	k->makeSound();
 
+	std::cout << "...\n";
+	std::cout << "----------------------------------------------\n";
+	std::cout << "Construction des classes Dog et Cat avec new Brain : \n";
+	std::cout << "----------------------------------------------\n";
+
+	Brain *_Brain = new Brain();
+
 	delete meta;
 	delete i;
 	delete j;
 	delete k;
 	delete wrongcat;
+	delete _Brain;
 	return (0);
 }

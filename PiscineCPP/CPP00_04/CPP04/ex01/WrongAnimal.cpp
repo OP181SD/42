@@ -6,13 +6,14 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:07:46 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/13 15:55:49 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 15:58:30 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : type("Wrong Animal")
+WrongAnimal::WrongAnimal()
+	: type("Wrong Animal")
 {
 	std::cout << "Constructeur de WrongAnimal.\n";
 }

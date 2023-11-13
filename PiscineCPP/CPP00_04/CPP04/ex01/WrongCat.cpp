@@ -6,13 +6,14 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:49:31 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/13 15:57:33 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 15:58:21 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : type("WrongCat")
+WrongCat::WrongCat()
+	: type("WrongCat")
 {
 	std::cout << "Constructeur de WrongCat.\n";
 }
