@@ -6,16 +6,16 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:22:34 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/13 14:24:55 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 18:13:25 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "WrongAnimal.hpp"
+#include <iostream>
 
 #pragma once
 
-class WrongCat 
+class WrongCat
 {
   protected:
 	std::string type;
@@ -25,7 +25,7 @@ class WrongCat
 	WrongCat(std::string wrongCat);
 	WrongCat(const WrongCat &other);
 	WrongCat &operator=(const WrongCat &rhs);
-	virtual ~WrongCat();
-	virtual void makeSound() const;
+	~WrongCat();
+	void makeSound() const;
 	std::string getType() const;
 };

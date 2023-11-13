@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:52:49 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/13 15:56:53 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/13 19:32:41 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ int	main(void)
 
 	std::cout << "\nAnimal : ";
 	meta->makeSound();
-	std::cout << "...\n";
 	std::cout << "----------------------------------------------\n";
-	std::cout << "Remplacement par le WrongAnimal et le WrongCat : \n";
+	std::cout << "le WrongAnimal et le WrongCat : \n";
 	std::cout << "----------------------------------------------\n";
-	
+
 	const WrongCat *wrongcat = new WrongCat();
 	const WrongAnimal *k = new WrongAnimal();
 
