@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:59:04 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 08:24:21 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/18 12:14:25 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,19 @@ class Bureaucrat
 	class GradeTooHighException : public std::exception
 	{
 		public:
-		virtual const char *what() const throw()
-		{
-			return ("Grade to High");
-		}
+		virtual const char *what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 		public:
-		virtual const char *what() const throw()
-		{
-			return ("Grade to Low");
-		}
+		virtual const char *what() const throw();
 	};
-
+	// Getters
+	
 	std::string getName() const;
 	int getGrade();
+	
 	void GradeRange(int grade);
 	void incrementelow();
 	void incrementehigh();

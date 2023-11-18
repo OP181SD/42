@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:04:09 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 11:57:55 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/18 12:17:46 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ Bureaucrat::~Bureaucrat()
 void Bureaucrat::GradeRange(int grade)
 {
 	if (grade > 150)
-		throw GradeTooHighException();
+		throw  Bureaucrat::GradeTooHighException();
 	else if (grade < 1)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	else
 		_grade = grade;
 }
@@ -59,7 +59,7 @@ void Bureaucrat::incrementelow()
 	if (_grade > 1)
 		_grade--;
 	else
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 		
 }
 
@@ -68,7 +68,17 @@ void Bureaucrat::incrementehigh()
 	if (_grade < 150)
 		_grade++;
 	else
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
+}
+
+const char * Bureaucrat::GradeTooHighException::what() const throw()
+{
+	
+	return ("GradeTooHigh.");
+}
+const char * Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("GradeTooLow.");
 }
 
 std::string Bureaucrat::getName() const
