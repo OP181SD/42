@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
+#    By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 10:57:42 by yassine           #+#    #+#              #
-#    Updated: 2023/11/15 12:04:57 by yassine          ###   ########.fr        #
+#    Updated: 2023/11/18 12:33:44 by yasaidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
 SRCS = main.cpp \
-       Bureaucrat.cpp 
+	   Form.cpp \
+       Bureaucrat.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
