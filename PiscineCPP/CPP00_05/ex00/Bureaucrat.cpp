@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:04:09 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 08:56:38 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/18 11:57:55 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 {
 	std::cout << "Nom : " << name << std::endl;
 	std::cout << "Grade : " << grade << std::endl;
-	GradeRange(grade); e
+	GradeRange(grade); 
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
