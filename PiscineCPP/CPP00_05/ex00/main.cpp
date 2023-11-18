@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:55:11 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 12:22:18 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:15:07 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void Incrementation() {
         Bureaucrat Gwendoline("Gwendoline", 3);
         std::cout << Gwendoline << std::endl;
         Gwendoline.incrementelow(); 
-        std::cout << "Après avoir i--, Gwendoline a maintenant : " << Gwendoline << std::endl;
+        std::cout << "Après avoir incrémenté, Gwendoline a maintenant : " << Gwendoline << std::endl;
     } catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
@@ -38,7 +38,7 @@ void Incrementation() {
         Bureaucrat Geraltine("Geraltine", 149);
         std::cout << Geraltine << std::endl;
         Geraltine.incrementehigh(); 
-        std::cout << "Après avoir i++ Geraltine a maintenant : " << Geraltine << std::endl;
+        std::cout << "Après avoir décrementé Geraltine a maintenant : " << Geraltine << std::endl;
     } catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }

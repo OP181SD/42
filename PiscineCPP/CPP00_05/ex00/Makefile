@@ -5,11 +5,10 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/15 10:57:42 by yassine           #+#    #+#              #
-#    Updated: 2023/11/15 12:04:57 by yassine          ###   ########.fr        #
+#    Created: 2023/11/18 17:14:20 by yassine           #+#    #+#              #
+#    Updated: 2023/11/18 17:14:47 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 PROGRAM = Bureaucrat
 
@@ -21,7 +20,6 @@ RM = rm -rf
 
 SRCS = main.cpp \
        Bureaucrat.cpp 
-
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM)
