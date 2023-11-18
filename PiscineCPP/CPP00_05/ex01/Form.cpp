@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:19:33 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/18 13:39:48 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:29:55 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form()
 	: _name("DefaultForm"), _signed(false), _grade(1), _grade_exec(1)
@@ -31,12 +32,26 @@ Form::Form(const Form &other)
 	std::cout << "Constructeur de copie de Form.\n";
 }
 
-
-
 Form &Form::operator=(const Form &rhs)
 {
 	if (this != &rhs)
 		_signed = rhs.GetSigned();
+	return (*this);
+}
+
+void Form::GetFromRange(int grade)
+{
+	if (_grade > 150)
+		Form::GradeTooHighException();
+	else if (_grade < 1)
+		Form::GradeTooLowException();
+	else
+		grade = _grade;
+}
+
+std::string Form::GetName() const
+{
+	return (_name);
 }
 
 bool Form::GetSigned() const

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+         #
+#    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 10:57:42 by yassine           #+#    #+#              #
-#    Updated: 2023/11/18 12:33:44 by yasaidi          ###   ########.fr        #
+#    Updated: 2023/11/18 17:14:30 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-PROGRAM = Bureaucrat
+PROGRAM = Form
 
 CC = g++
 

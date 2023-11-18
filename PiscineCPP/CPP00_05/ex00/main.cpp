@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:55:11 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 17:15:07 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:43:37 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ void Incrementation() {
     } catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
-
     displayLowGradeSection();
     try {
-        Bureaucrat Geraltine("Geraltine", 149);
+        Bureaucrat Geraltine("Geraltine", 150);
         std::cout << Geraltine << std::endl;
         Geraltine.incrementehigh(); 
         std::cout << "Après avoir décrementé Geraltine a maintenant : " << Geraltine << std::endl;

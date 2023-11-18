@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:04:09 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 12:23:18 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:38:21 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ Bureaucrat::~Bureaucrat()
 void Bureaucrat::GradeRange(int grade)
 {
 	if (grade > 150)
-		throw  Bureaucrat::GradeTooHighException();
+		throw  Bureaucrat::GradeTooLowException();
 	else if (grade < 1)
-		throw Bureaucrat::GradeTooLowException();
+		throw Bureaucrat::GradeTooHighException();
 	else
 		_grade = grade;
 }
