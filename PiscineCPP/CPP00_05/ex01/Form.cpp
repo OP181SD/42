@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:19:33 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/18 17:29:55 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:48:59 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ Form &Form::operator=(const Form &rhs)
 
 void Form::GetFromRange(int grade)
 {
-	if (_grade > 150)
-		Form::GradeTooHighException();
-	else if (_grade < 1)
+	if (grade > 150)
 		Form::GradeTooLowException();
+	else if (grade < 1)
+		Form::GradeTooHighException();
 	else
 		grade = _grade;
 }

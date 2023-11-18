@@ -6,12 +6,12 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:04:09 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 17:44:22 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:49:17 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat()
 	: _name(""), _grade(1)
