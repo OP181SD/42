@@ -3,28 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:55:11 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 17:51:56 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/19 08:27:38 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-void Boss()
+void	displayHighGradeSection(void)
 {
-    Form id_0("Crocodile", 0, 1);
-    std::cout << "---- Formulaire ----\n";
-    std::cout << "Nom : " << id_0.GetName() << "\n"
-              << "Grade requis : " << id_0.GetGrade() << "\n"
-              << "Grade d'exécution : " << id_0.GetGradeExec() << "\n";	
+	std::cout << "==== Bureaucrat avec une note haute ====\n";
+	std::cout << "---------------------------------------------\n";
 }
 
-int main(void)
+void	displayLowGradeSection(void)
 {
-	Boss();
-    return (0);
+	std::cout << "==== Bureaucrat avec une note basse ====\n";
+	std::cout << "---------------------------------------------\n";
 }
 
+void	RangeHighBoss(void)
+{
+	displayHighGradeSection();
+	try
+	{
+		Form Mr0("Mr 0", 0, 0);
+		std::cout << Mr0 << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+void	RangeLowLooser(void)
+{
+	displayHighGradeSection();
+	try
+	{
+		Form Mr0("Mr 0", 151, 151);
+		std::cout << Mr0 << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+int	main(void)
+{
+	RangeHighBoss();
+	RangeLowLooser();
+	return (0);
+}

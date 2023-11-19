@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:59:04 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/18 12:22:36 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/19 08:19:59 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ class Bureaucrat
 	void GradeRange(int grade);
 	void incrementelow();
 	void incrementehigh();
+	void signFrom();
 	friend std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj);
 };
