@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:19:33 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/19 08:25:29 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/19 10:40:57 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Form.hpp"
 
 Form::Form()
-	: _name("Uknow"), _signed(), _grade(1), _grade_exec(1)
+	: _name("Uknow"), _signed(false), _grade(1), _grade_exec(1)
 {
 	std::cout << "Constructeur par defaut\n";
 }
@@ -22,11 +22,9 @@ Form::Form()
 Form::Form(std::string name, int grade, int grade_exec)
 	: _name(name), _grade(grade), _grade_exec(grade_exec)
 {
-	std::cout << "Constructeur avec des attribut\n";
-	if (grade > 150 || grade_exec > 150)
-		throw Form::GradeTooLowException();
-	else if (grade < 1 || grade_exec < 1)
-		throw Form::GradeTooHighException();
+	std::cout << "Formulaire\n";
+	GetFromRange(grade, grade_exec);
+	_grade_exec = grade_exec;
 }
 
 Form::Form(const Form &other)
@@ -42,15 +40,22 @@ Form &Form::operator=(const Form &rhs)
 	return (*this);
 }
 
+void Form::GetFromRange(int grade, int grade_exec)
+{
+	if (grade < 1 || grade_exec < 1)
+		throw Form::GradeTooHighException();
+	else if (grade > 150 || grade_exec > 150)
+		throw Form::GradeTooLowException();
+	else
+		_grade = grade;
+}
+
 void Form::beSigned(Bureaucrat &signatory)
 {
-	if (signatory.getGrade() >= 1)
-	{
+	if (_grade > signatory.getGrade())
+		throw Form::GradeTooLowException();
+	else
 		_signed = true;
-		signatory.signFrom();
-	}
-	else if (signatory.getGrade() > 150)
-		Form::GradeTooLowException();
 }
 
 std::string Form::getName() const
@@ -76,10 +81,7 @@ int Form::getGradeExec() const
 std::ostream &operator<<(std::ostream &out, const Form &obj)
 {
 	out << "Name: " << obj._name << std::endl;
-	if (obj._signed)
-		out << "Status: Signed" << std::endl;
-	else
-		out << "Status: Not Signed" << std::endl;
+	out << "Status: " << (obj.getSigned() ? "Signed" : "Not Signed") << std::endl;
 	out << "Grade required to sign: " << obj._grade << std::endl;
 	out << "Grade required to execute: " << obj._grade_exec << std::endl;
 	return (out);

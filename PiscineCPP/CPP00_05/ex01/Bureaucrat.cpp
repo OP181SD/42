@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:04:09 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/19 07:57:13 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/19 10:38:14 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Destructeur par défaut du Bureaucrat.\n";
+	std::cout << "Destructeur du Bureaucrat.\n";
 }
 
 void Bureaucrat::GradeRange(int grade)
@@ -86,15 +86,18 @@ int Bureaucrat::getGrade()
 	return (_grade);
 }
 
-void Bureaucrat::signFrom()
+void Bureaucrat::signForm(Form &form)
 {
-	if (_grade >= 1)
+	try
 	{
-		std::cout << _name << " signed ";
+		form.beSigned(*this);
+		std::cout << "\033[1;34m" << *this << " signed " << form << "\033[0m" << std::endl;
+
 	}
-	else if (_grade < 150)
+	catch (const std::exception &e)
 	{
-		std::cout << "couldn’t sign", Form::GradeTooLowException();
+		std::cerr << "\033[1;31m cannot sign " << form << " because   \033[0m", throw GradeTooLowException();
+
 	}
 }
 
