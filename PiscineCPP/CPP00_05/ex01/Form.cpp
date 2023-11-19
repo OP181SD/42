@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:19:33 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/19 10:40:57 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/19 12:33:54 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Form::Form()
 Form::Form(std::string name, int grade, int grade_exec)
 	: _name(name), _grade(grade), _grade_exec(grade_exec)
 {
-	std::cout << "Formulaire\n";
+	std::cout << "Formulaire :\n";
 	GetFromRange(grade, grade_exec);
 	_grade_exec = grade_exec;
 }
@@ -81,10 +81,13 @@ int Form::getGradeExec() const
 std::ostream &operator<<(std::ostream &out, const Form &obj)
 {
 	out << "Name: " << obj._name << std::endl;
-	out << "Status: " << (obj.getSigned() ? "Signed" : "Not Signed") << std::endl;
+	if (obj.getSigned())
+		out << "Status: Signed" << std::endl;
+	else
+		throw Form::GradeTooLowException();
 	out << "Grade required to sign: " << obj._grade << std::endl;
 	out << "Grade required to execute: " << obj._grade_exec << std::endl;
-	return (out);
+	return out;
 }
 
 Form::~Form()
