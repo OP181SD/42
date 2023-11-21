@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:04:09 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/19 10:38:14 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/19 12:39:55 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,15 @@ void Bureaucrat::signForm(Form &form)
 	{
 		form.beSigned(*this);
 		std::cout << "\033[1;34m" << *this << " signed " << form << "\033[0m" << std::endl;
-
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << "\033[1;31m cannot sign " << form << " because   \033[0m", throw GradeTooLowException();
-
+		std::cerr << "\033[1;31mcannot sign -> " << form << "Because: \033[0m", throw GradeTooLowException();
 	}
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj)
 {
-	out << obj._name << ", bureaucrat grade " << obj._grade;
+	out << obj._name << "bureaucrat grade " << obj._grade;
 	return (out);
 }

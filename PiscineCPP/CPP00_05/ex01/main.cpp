@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 10:55:11 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/19 10:37:12 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/19 12:50:18 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	RangeHighBoss(void)
 void	RangeLowLooser(void)
 {
 	displayLowGradeSection();
+
 	try
 	{
 		Form Mr0("Mr 0", 151, 151);
@@ -51,45 +52,36 @@ void	RangeLowLooser(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
+
 }
 
 int	main(void)
 {
+	std::cout << "----------------------------------------------";
+	std::cout << "\n";
 	RangeHighBoss();
 	RangeLowLooser();
-
-	std::cout << "-------------- Bureaucrat ----------------\n";
-	Bureaucrat bureaucrat("Mr Bureaucrat ", 1);
+	Bureaucrat bureaucrat;
 	std::cout << "-------------- Sous Chef aka Mr 1 ----------------\n";
 	Form form("Mr 1", 1, 1);
 	try
 	{
 		bureaucrat.signForm(form);
-		std::cout << "------------------------------\n";
 	}
 	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	// Afffichage du formulaire
-	std::cout << form << std::endl;
-	
-	std::cout << "------------------------------\n";
-	Bureaucrat bureaucrat3("Mr 3", 1);
-	std::cout << "-------------- Random ----------------\n";
-	Form form3("Mr 1", 3, 3);
-
+	Bureaucrat bureaucrat3;
+	std::cout << "-------------- Mr 3 ----------------\n";
+	Form form3("Mr 3", 3, 3);
 	try
 	{
 		bureaucrat3.signForm(form3);
-		std::cout << "------------------------------\n";
 	}
 	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	// Afffichage du formulaire
-	std::cout << form3 << std::endl;
-	
 	return (0);
 }
