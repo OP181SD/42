@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
+#    By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 08:06:59 by yasaidi           #+#    #+#              #
-#    Updated: 2023/11/22 07:57:33 by yassine          ###   ########.fr        #
+#    Updated: 2023/11/23 08:53:18 by yasaidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ RM = rm -rf
 
 SRCS = main.cpp \
 	   AForm.cpp \
-	   Bureaucrat.cpp 
+	   Bureaucrat.cpp \
+	   ShrubberyCreationForm.cpp 
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM)
