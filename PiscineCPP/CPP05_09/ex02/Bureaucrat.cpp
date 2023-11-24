@@ -6,12 +6,11 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:04:09 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/22 08:00:40 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:38:21 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat()
 	: _name(""), _grade(1)
@@ -24,7 +23,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 {
 	std::cout << "Nom : " << name << std::endl;
 	std::cout << "Grade : " << grade << std::endl;
-	GradeRange(grade);
+	GradeRange(grade); 
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
@@ -42,13 +41,13 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Destructeur du Bureaucrat.\n";
+	std::cout << "Destructeur par défaut du Bureaucrat.\n";
 }
 
 void Bureaucrat::GradeRange(int grade)
 {
 	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw  Bureaucrat::GradeTooLowException();
 	else if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
@@ -59,6 +58,7 @@ void Bureaucrat::incrementelow()
 {
 	if (_grade > 1)
 		_grade--;
+		
 }
 
 void Bureaucrat::incrementehigh()
@@ -67,11 +67,12 @@ void Bureaucrat::incrementehigh()
 		_grade++;
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
+const char * Bureaucrat::GradeTooHighException::what() const throw()
 {
+	
 	return ("GradeTooHigh.");
 }
-const char *Bureaucrat::GradeTooLowException::what() const throw()
+const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("GradeTooLow.");
 }
@@ -84,21 +85,6 @@ std::string Bureaucrat::getName() const
 int Bureaucrat::getGrade()
 {
 	return (_grade);
-}
-
-void Bureaucrat::signForm(AForm &form)
-{
-	try
-	{
-		form.beSigned(*this);
-		std::cout << "\033[1;34m" << *this << " signed " << form << "\033[0m" << std::endl;
-
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "\033[1;31m cannot sign " << form << " because   \033[0m", throw GradeTooLowException();
-
-	}
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj)

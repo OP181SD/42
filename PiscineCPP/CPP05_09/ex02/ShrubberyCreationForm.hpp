@@ -6,22 +6,19 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 08:38:16 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/23 12:46:19 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/24 11:07:08 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include "AForm.hpp"
 #include <fstream>
 #include <iostream>
+#include <ostream>
 #include <string>
 
-#define RESET "\033[0m"
-#define GREEN "\033[32m"
-#define RED "\033[31m"
-#define BOLD "\033[1m"
-
-class ShrubberyCreationForm
+class ShrubberyCreationForm : public AForm
 {
   private:
 	std::string _shruberry;
@@ -33,8 +30,4 @@ class ShrubberyCreationForm
 	ShrubberyCreationForm(const ShrubberyCreationForm &other);
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
 	~ShrubberyCreationForm();
-	// Create file
-	void Createfile(std::string filename);
-	// Readfile
-	std::string OwnTree(const ShrubberyCreationForm &target);
 };
