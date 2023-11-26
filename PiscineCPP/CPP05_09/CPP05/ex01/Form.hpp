@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 11:50:44 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/25 13:38:26 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/26 08:50:29 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "Bureaucrat.hpp"
 #include <exception>
@@ -47,7 +49,7 @@ class Form
 		public:
 		const char *what() const throw()
 		{
-			return ("GradeTooHigh.");
+			return ("GradeTooHighException.");
 		}
 	};
 	class GradeTooLowException : public std::exception
@@ -55,7 +57,7 @@ class Form
 		public:
 		const char *what() const throw()
 		{
-			return ("GradeTooLow.");
+			return ("GradeTooLowException.");
 		}
 	};
 };

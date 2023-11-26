@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 08:45:24 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/25 12:05:33 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/25 15:38:13 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+# pragma once 
+
 #include <exception>
 #include <iostream>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -34,14 +39,15 @@ class Bureaucrat
 	// Member Functions
 	void Incrementevalue();
 	void Decrementevalue();
-	
+	void signForm(Form& s);
+
 	// Execption
 	class GradeTooHighException : public std::exception
 	{
 		public:
 		const char *what() const throw()
 		{
-			return ("GradeTooHigh.");
+			return ("Bureaucrat::GradeTooHighException");
 		}
 	};
 
@@ -50,7 +56,7 @@ class Bureaucrat
 		public:
 		const char *what() const throw()
 		{
-			return ("GradeTooLow.");
+			return ("Bureaucrat::GradeTooLowException.");
 		}
 	};
 };

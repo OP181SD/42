@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 11:50:38 by yasaidi           #+#    #+#             */
-/*   Updated: 2023/11/25 13:40:33 by yasaidi          ###   ########.fr       */
+/*   Updated: 2023/11/26 08:56:39 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ Form::Form()
 Form::Form(std::string name, int grade_sign, int grade_exec)
 	: _name(name), to_sign(grade_sign), to_exec(grade_exec)
 {
+	if (grade_sign < 1 || grade_exec < 1)
+		throw Form::GradeTooHighException();
+	else if (grade_sign > 150  || grade_exec > 150)
+		throw Form::GradeTooLowException();
 }
 
 Form::Form(const Form &src)
 	: _name(src._name), to_sign(src.to_sign), to_exec(src.to_exec)
 {
-	*this = src;
+
 }
 
 Form &Form::operator=(const Form &rhs)
@@ -35,8 +39,7 @@ Form &Form::operator=(const Form &rhs)
 }
 
 Form::~Form()
-{
-}
+{}
 
 std::string Form::getName() const
 {
@@ -60,10 +63,13 @@ bool Form::getSigned() const
 
 void Form::beSigned(Bureaucrat obj)
 {
-	if (obj.getGrade() < 1)
-		throw Form::GradeTooLowException();
-	else if (obj.getGrade() > 150)
-		throw Form::GradeTooHighException();
+	if (!_signed)
+	{
+		if (to_sign >= obj.getGrade())
+			_signed = true;
+		else
+			throw GradeTooLowException();
+	}
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &obj)
