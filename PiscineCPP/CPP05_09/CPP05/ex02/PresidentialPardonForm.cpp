@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:30:41 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 13:45:55 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/27 13:56:41 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(PresidentialPardonFor
 PresidentialPardonForm::~PresidentialPardonForm()
 {}
 
-void PresidentialPardonForm::executeTheAction(std::string target)
+void PresidentialPardonForm::_executeAction() const
 {
-	std::cout << target + " has been pardoned by Zafod Beeblebrox." << std::endl;
+	std::cout << _target + " has been pardoned by Zafod Beeblebrox." << std::endl;
 }

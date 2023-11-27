@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:27:17 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 13:44:52 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/27 13:57:10 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const &
 RobotomyRequestForm::~RobotomyRequestForm()
 {}
 
-void RobotomyRequestForm::executeTheAction(std::string target) 
+void RobotomyRequestForm::_executeAction() const 
 {
     std::srand(std::time(NULL));
     std::cout << "Drilling noises... ";
     if (std::rand() % 2 == 0)
-        std::cout << target << " has been robotomized successfully!" << std::endl;
+        std::cout << _target << " has been robotomized successfully!" << std::endl;
 	 else
-        std::cout << "Robotomy failed for " << target << "." << std::endl;
+        std::cout << "Robotomy failed for " << _target << "." << std::endl;
 }

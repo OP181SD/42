@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:23:44 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 13:42:28 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/27 13:57:12 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {}
 
-void ShrubberyCreationForm::executeTheAction(std::string target)
+void ShrubberyCreationForm::_executeAction() const
 {
-	std::fstream file(target + "_shrubbery", std::fstream::out | std::fstream::app);
+	std::fstream file(_target + "_shrubbery", std::fstream::out | std::fstream::app);
 	if (!file.is_open())
 	{
 		std::cout << "Error: file is not open" << std::endl;

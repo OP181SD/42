@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:30:53 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 13:45:20 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/27 13:56:48 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ public:
 	PresidentialPardonForm & operator=(PresidentialPardonForm const & src);
 	~PresidentialPardonForm();
 
-	void executeTheAction(std::string target);
 	
 };

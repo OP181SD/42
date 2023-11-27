@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:24:00 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 13:42:47 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/27 13:57:04 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ public:
 	ShrubberyCreationForm & operator=(ShrubberyCreationForm const & src);
 	~ShrubberyCreationForm();
 
-	void executeTheAction(std::string target);
+
 };
