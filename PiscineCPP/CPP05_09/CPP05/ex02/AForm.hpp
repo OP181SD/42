@@ -27,6 +27,7 @@ private:
 	int const			_gradeToSign;
 	int const			_gradeToExecute;
 
+	virtual void _executeAction() const = 0;
 public:
 	// Canonical AForm
 	AForm();
@@ -57,6 +58,14 @@ public:
 			const char* what() const throw()
 			{
 				return ("Grade is too low.");
+			}
+	};
+	class CanNotSign : public std::exception
+	{
+		public:
+			const char* what() const throw()
+			{
+				return ("CanNotSign.");
 			}
 	};
 };

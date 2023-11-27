@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 20:35:51 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 10:21:25 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/27 13:09:40 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,18 @@ void Bureaucrat::signAForm(AForm & Aform)
     }   
 }
 
+void Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << "executed" << form;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj)
 {

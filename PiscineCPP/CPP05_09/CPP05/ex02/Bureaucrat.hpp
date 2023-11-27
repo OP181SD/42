@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 20:34:12 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 10:23:02 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/27 13:13:36 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 	void signAForm(AForm & Aform);
+	void executeForm(AForm const & form) const;
 	// Exceptions
 	class GradeTooHighException : public std::exception
 	{
