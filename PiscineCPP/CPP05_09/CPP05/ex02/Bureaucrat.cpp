@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 20:35:51 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 13:54:44 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/27 14:04:29 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void Bureaucrat::executeForm(AForm const & form) const
 	try
 	{
 		form.execute(*this);
-		std::cout << _name + "executed" + form.getName() << std::endl;
+		std::cout << _name + " executed " + form.getName() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
