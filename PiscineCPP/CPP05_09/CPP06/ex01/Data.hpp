@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 16:55:30 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/28 11:56:46 by yassine          ###   ########.fr       */
+/*   Created: 2023/11/28 13:35:16 by yassine           #+#    #+#             */
+/*   Updated: 2023/11/28 21:28:00 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <string>
-#include <iomanip>
-#include <cmath>
-#include <limits>
-#include <ctype.h>
-#include <cctype>
 
-class ScalarConverter
+struct Data
 {
-private:
-		std::string _literal;
-public:
-	ScalarConverter();
-	ScalarConverter(std::string literal);
-	ScalarConverter(ScalarConverter const & src);
-	ScalarConverter & operator=(ScalarConverter const & src);
-	~ScalarConverter();
-	static void convert(std::string literal);
+
+	std::string s1;
+	int n;
 };

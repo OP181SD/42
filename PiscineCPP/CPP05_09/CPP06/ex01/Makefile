@@ -6,7 +6,7 @@
 #    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 11:38:15 by yassine           #+#    #+#              #
-#    Updated: 2023/11/28 11:47:39 by yassine          ###   ########.fr        #
+#    Updated: 2023/11/28 21:38:04 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
 SRCS = main.cpp \
-       Seralizer.cpp 
+	   Serializer.cpp 
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM_NAME)

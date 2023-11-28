@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:41:53 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/28 11:47:12 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/28 20:46:31 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <cstdint>
 #include <iostream>
 #include <string>
+#include "Data.hpp"
 
 class Serializer
 {
