@@ -6,11 +6,11 @@
 #    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 21:27:57 by yassine           #+#    #+#              #
-#    Updated: 2023/11/27 17:12:58 by yassine          ###   ########.fr        #
+#    Updated: 2023/11/27 21:09:55 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROGRAM_NAME = Form
+PROGRAM_NAME = Scalar
 
 CC = clang++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
