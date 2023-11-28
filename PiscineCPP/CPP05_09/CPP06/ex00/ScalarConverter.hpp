@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 16:55:30 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 17:09:33 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/28 09:19:09 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include <iomanip>
 #include <cmath>
 #include <limits>
+#include <ctype.h>
+#include <cctype>
+
 
 
 class ScalarConverter
