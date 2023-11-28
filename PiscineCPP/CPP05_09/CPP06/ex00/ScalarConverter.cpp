@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:08:49 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/28 09:41:44 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/28 11:50:14 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ void ScalarConverter::convert(std::string literal) {
         std::cout << "out of range.";
     }
 }
-
