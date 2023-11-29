@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:08:49 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/28 11:50:14 by yassine          ###   ########.fr       */
+/*   Updated: 2023/11/29 10:12:24 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,19 @@ void ScalarConverter::convert(std::string literal) {
                 return;
             }
         }
-
-        int string_to_int = std::stoi(literal);
+        int string_to_int = atoi(literal.c_str());
         int integer = static_cast<int>(string_to_int);
 		if (isprint(integer))
-		{
 			std::cout << "char: '" << static_cast<char>(integer) << "'" << std::endl;
-		}
 		else
 			std::cout << "char: Non displayable" << std::endl;
 
         std::cout << "int: " << integer << std::endl;
-        float string_to_float = std::stof(literal);
+        float string_to_float = atof(literal.c_str());
         float flottant = static_cast<float>(string_to_float);
         std::cout << "float: " << std::fixed << std::setprecision(1) << flottant << "f" << std::endl;
 
-        double string_to_double = std::stod(literal);
+         double string_to_double = strtod(literal.c_str(), NULL);
         double _double = static_cast<double>(string_to_double);
         std::cout << "double: " << std::fixed << std::setprecision(1) << _double << std::endl;
 
