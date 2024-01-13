@@ -6,7 +6,7 @@
 #    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 16:09:22 by yassine           #+#    #+#              #
-#    Updated: 2024/01/08 15:01:38 by yassine          ###   ########.fr        #
+#    Updated: 2024/01/08 16:35:22 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ RM = rm -rf
 
 SRCS = Bureaucrat.cpp \
 		AForm.cpp \
+		Intern.cpp \
 		ShrubberyCreationForm.cpp \
 		RobotomyRequestForm.cpp \
 		PresidentialPardonForm.cpp \

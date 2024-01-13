@@ -5,48 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 20:56:09 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/26 21:19:40 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/07 16:10:44 by yassine           #+#    #+#             */
+/*   Updated: 2024/01/07 16:35:24 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
+
 int main(void)
 {
 	try
 	{
-		Bureaucrat Gwendoline("Gwendoline ",2);
-		Gwendoline.incrementGrade();
-		std::cout << Gwendoline;
+		std::cout << BLUE << "Creating a bureaucrat with grade 1 "  << RESET << std::endl;
+		Bureaucrat jacky("Jacky", 0);
+		std::cout << jacky;
 	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << "Error : " << e.what() << RESET << '\n';
+	}
+	
+	try
+	{
+		std::cout << BLUE << "Creating a bureaucrat with grade 151 " << RESET << std::endl;
+		Bureaucrat Gisel("Gisel", 151);
+		std::cout << Gisel;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << "Error : " << e.what() << RESET << '\n';
+	}
+	
+	try
+	{
+		std::cout << BLUE << "Creating a bureaucrat with grade 3" << RESET << std::endl;
+		Bureaucrat Gisel("Gisel", 3);
+		Gisel.incrementGrade(Gisel.getGrade());
+		std::cout << GREEN << Gisel;
+	}
+	
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	std::cout << "\n";
+
 	try
 	{
-		Bureaucrat Geraltine("Geraltine  ",150);
-		Geraltine.decrementGrade();
-		std::cout << Geraltine;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	std::cout << "\n";
-	try
-	{
-		Bureaucrat Giselle("Giselle ", 0);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		Bureaucrat Jacky("Jacky ",151);
+		std::cout << BLUE << "Creating a bureaucrat with grade 149" << RESET << std::endl;
+		Bureaucrat Gisel("Gisel", 149);
+		Gisel.decrementGrade(Gisel.getGrade());
+		std::cout  << GREEN << Gisel;
 	}
 	catch(const std::exception& e)
 	{

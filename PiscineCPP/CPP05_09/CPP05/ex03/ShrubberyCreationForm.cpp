@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:48:32 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/09 10:53:51 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/01/09 10:53:13 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ ShrubberyCreationForm  & ShrubberyCreationForm ::operator=(ShrubberyCreationForm
 		_target = rhs._target;
 	return (*this);
 }	
-
 
 void ShrubberyCreationForm::_executeAction() const
 {

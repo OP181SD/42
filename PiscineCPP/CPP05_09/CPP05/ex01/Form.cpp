@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 21:28:41 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/27 09:52:16 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/08 13:20:26 by yassine           #+#    #+#             */
+/*   Updated: 2024/01/08 14:23:54 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,27 @@
 Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeToExecute(150)
 {}
 
-Form::Form(std::string name, int gradeToSign, int gradeToExecute)
+Form::Form(std::string name, int gradeToSign, int gradeToExecute) 
 : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-		if (_gradeToExecute < 1 || _gradeToSign < 1)
-			throw Form::GradeTooHighException();
-		else if (_gradeToExecute > 150 || _gradeToSign > 150)
-			throw Form::GradeTooLowExecption();
-		else
-			std::cout << "Form " << _name << " created." << std::endl;
+	if (gradeToSign < HIGH_GRADE || gradeToExecute < HIGH_GRADE)
+		throw Form::GradeTooHighException();
+	else if (gradeToSign > LOW_GRADE || gradeToExecute > LOW_GRADE)
+		throw Form::GradeTooLowException();
 }
 
-Form::Form(Form const & src) : _name(src._name), _gradeToSign(src._gradeToSign), _gradeToExecute(src._gradeToExecute)
+Form::Form(Form const & other) 
+: _name(other._name), _signed(other._signed), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute)
 {
-	*this = src;
+	*this  = other;
 }
 
-Form & Form::operator=(Form const & src)
+Form & Form::operator=(Form const & rhs)
 {
-	if (this != &src)
-		_signed = src._signed;
+	if (this != &rhs)
+		_signed = rhs._signed;
 	return (*this);
 }
-
-Form::~Form()
-{}
 
 std::string Form::getName() const
 {
@@ -51,30 +47,38 @@ bool Form::getSigned() const
 	return (_signed);
 }
 
-int Form::getGradeToSign() const
-{
-	return (_gradeToSign);
-}
-
 int Form::getGradeToExecute() const
 {
 	return (_gradeToExecute);
 }
 
-void Form::beSigned(Bureaucrat & bureaucrat)
+int Form::getGradeToSign() const
 {
-	if (bureaucrat.getGrade() <= _gradeToSign)
-		_signed = true;
-	else
-		throw GradeTooLowExecption();
+	return (_gradeToSign);
 }
 
-std::ostream& operator<<(std::ostream& out, const Form& src)
+void Form::beSigned(Bureaucrat const & bureaucrat)
 {
-    if (src.getSigned()) {
-        out << "Form " << src.getName() << " is signed";
-    } else {
-        out << "Form " << src.getName() << " is not signed";
-    }
-    return out;
+	if (bureaucrat.getGrade() <=  _gradeToSign)
+		_signed = true;
+	else
+		throw Form::GradeTooLowException();
+}
+
+void Form::setSigned(bool signedValue)
+{
+	_signed = signedValue;
+}
+
+Form::~Form()
+{
+}
+
+std::ostream & operator<<(std::ostream & o, Form const & rhs)
+{
+	if (rhs.getSigned())
+		o << "Formular : " << rhs.getName() << " as been is signed." << std::endl;
+	else
+		o << "Form " << rhs.getName() << " is not signed." << std::endl;
+	return (o);	
 }

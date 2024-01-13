@@ -5,23 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/07 16:09:22 by yassine           #+#    #+#              #
-#    Updated: 2024/01/08 15:01:38 by yassine          ###   ########.fr        #
+#    Created: 2024/01/13 08:40:37 by yassine           #+#    #+#              #
+#    Updated: 2024/01/13 08:40:58 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROGRAM_NAME = Bureaucrat
+PROGRAM_NAME = Scalar
 
 CC = clang++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
-SRCS = Bureaucrat.cpp \
-		AForm.cpp \
-		ShrubberyCreationForm.cpp \
-		RobotomyRequestForm.cpp \
-		PresidentialPardonForm.cpp \
-		main.cpp 
+SRCS = main.cpp \
+	   Base.cpp \
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM_NAME)

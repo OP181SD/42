@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/28 11:38:15 by yassine           #+#    #+#              #
-#    Updated: 2023/11/28 21:38:04 by yassine          ###   ########.fr        #
+#    Created: 2024/01/13 08:32:44 by yassine           #+#    #+#              #
+#    Updated: 2024/01/13 08:35:05 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
 SRCS = main.cpp \
-	   Serializer.cpp 
+	   Seralizer.cpp 
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM_NAME)

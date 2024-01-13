@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 08:33:07 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/13 08:33:23 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/08 16:33:53 by yassine           #+#    #+#             */
+/*   Updated: 2024/01/08 16:34:15 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <cstdint>
-#include <iostream>
-#include <string>
-#include "Data.hpp"
+// Libraries
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
-class Serializer
+class Bureaucrat;
+class AForm;
+
+class Intern
 {
 private:
 	
 public:
-	Serializer();
-	Serializer(Serializer const & src);
-	Serializer & operator=(Serializer const & rhs);
-	~Serializer();
-	static uintptr_t serialize(Data* ptr);
-    static Data* deserialize(uintptr_t raw);
+	Intern();
+	Intern(Intern const & src);
+	Intern & operator=(Intern const & rhs);
+	~Intern();
+	AForm *makeForm(std::string formName, std::string target);
 };
+

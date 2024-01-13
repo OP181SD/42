@@ -5,20 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/26 21:27:57 by yassine           #+#    #+#              #
-#    Updated: 2023/11/27 09:56:30 by yassine          ###   ########.fr        #
+#    Created: 2024/01/07 16:09:22 by yassine           #+#    #+#              #
+#    Updated: 2024/01/08 13:53:16 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROGRAM_NAME = Form
+PROGRAM_NAME = Bureaucrat
 
 CC = clang++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
 SRCS = Bureaucrat.cpp \
-		main.cpp \
-		Form.cpp 
+		Form.cpp \
+		main.cpp 
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM_NAME)

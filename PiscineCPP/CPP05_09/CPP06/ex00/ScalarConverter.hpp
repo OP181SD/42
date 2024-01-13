@@ -5,30 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 16:55:30 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/28 11:56:46 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/03 21:37:13 by yassine           #+#    #+#             */
+/*   Updated: 2024/01/08 23:28:27 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <iomanip>
 #include <iostream>
 #include <string>
-#include <iomanip>
-#include <cmath>
+#include <sstream>
 #include <limits>
-#include <ctype.h>
+#include <cmath>
+#include <cstdlib>
 #include <cctype>
+#include <exception>
 
 class ScalarConverter
 {
-private:
-		std::string _literal;
 public:
 	ScalarConverter();
-	ScalarConverter(std::string literal);
-	ScalarConverter(ScalarConverter const & src);
-	ScalarConverter & operator=(ScalarConverter const & src);
+	static void convert(std::string const & literal);
+	ScalarConverter(ScalarConverter const & );
+	ScalarConverter & operator=(ScalarConverter const &);
 	~ScalarConverter();
-	static void convert(std::string literal);
 };
+
+

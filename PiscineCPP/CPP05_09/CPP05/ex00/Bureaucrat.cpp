@@ -5,40 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 20:35:51 by yassine           #+#    #+#             */
-/*   Updated: 2023/11/26 21:20:16 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/07 15:25:05 by yassine           #+#    #+#             */
+/*   Updated: 2024/01/08 13:25:16 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("default"), _grade(1) 
+Bureaucrat::Bureaucrat() : _name("default"), _grade(0)
 {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	if (grade < 1)
+	if (grade < HIGH_GRADE)
 		throw Bureaucrat::GradeTooHighException();
-	if (grade > 150)
-		throw Bureaucrat::GradeTooLowExecption();
+	else if (grade > LOW_GRADE)
+		throw Bureaucrat::GradeTooLowException();
 	else
-		_grade = grade;
+		setGrade(grade);	
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & src) : _name(src._name), _grade(src._grade)
+Bureaucrat::Bureaucrat(Bureaucrat const & other)
 {
-	*this = src;
+	*this = other;
 }
 
-Bureaucrat & Bureaucrat::operator=(Bureaucrat const & src)
+Bureaucrat & Bureaucrat::operator=(Bureaucrat const & rhs)
 {
-	if (this != &src)
-		_grade = src._grade;
+	if (this != &rhs)
+		_grade = rhs._grade;
 	return (*this);
 }
-
-Bureaucrat::~Bureaucrat()
-{}
 
 std::string Bureaucrat::getName() const
 {
@@ -50,19 +47,27 @@ int Bureaucrat::getGrade() const
 	return (_grade);
 }
 
-void Bureaucrat::incrementGrade()
+Bureaucrat::~Bureaucrat()
 {
-	if (_grade < 150)
-		_grade++;
-}
-void Bureaucrat::decrementGrade()
-{
-	if (_grade > 1)
-		_grade--;
 }
 
-std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj)
+void Bureaucrat::setGrade(int grade)
 {
-	out << obj.getName() + ", bureaucrat grade " << obj.getGrade();
-	return (out);
+	_grade = grade;
+}
+
+void Bureaucrat::incrementGrade(int grade)
+{
+	setGrade(grade - 1);
+}
+
+void Bureaucrat::decrementGrade(int grade)
+{
+	setGrade(grade + 1);
+}
+
+std::ostream& operator<<(std::ostream & o, Bureaucrat const & rhs)
+{
+	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << std::endl;
+	return (o);
 }
