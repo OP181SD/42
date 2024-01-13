@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 09:08:20 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/13 09:08:43 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/13 09:11:50 by yassine           #+#    #+#             */
+/*   Updated: 2024/01/13 09:11:58 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ScalarConverter.hpp"
 
@@ -91,8 +90,8 @@ void ScalarConverter::convert(std::string const & literal)
     else
         std::cout << "char: Non displayable" << std::endl;
 	
-	
     std::cout << "int: " << a_toi << std::endl;
     std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(a_tof) << "f" << std::endl;	
     std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(a_double) << std::endl;
+
 }
