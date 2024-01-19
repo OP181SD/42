@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 08:44:04 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/13 08:44:15 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/17 10:40:12 by yasaidi           #+#    #+#             */
+/*   Updated: 2024/01/17 10:44:38 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
-Base::~Base() {}
+Base::~Base()
+{
+}

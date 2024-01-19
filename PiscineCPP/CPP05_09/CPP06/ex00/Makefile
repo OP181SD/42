@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
+#    By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/03 21:34:42 by yassine           #+#    #+#              #
-#    Updated: 2024/01/03 21:36:29 by yassine          ###   ########.fr        #
+#    Created: 2024/01/03 11:54:12 by yasaidi           #+#    #+#              #
+#    Updated: 2024/01/15 09:42:37 by yasaidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROGRAM_NAME = Scalar
+PROGRAM_NAME = convert
 
 CC = clang++
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CPPFLAGS = -Wall -Werror -Wextra  -std=c++98
 RM = rm -rf
 
 SRCS = main.cpp \

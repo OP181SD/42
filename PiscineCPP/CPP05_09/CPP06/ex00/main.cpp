@@ -3,31 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 21:43:59 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/12 17:55:28 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/03 11:54:26 by yasaidi           #+#    #+#             */
+/*   Updated: 2024/01/18 18:55:03 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-
-
-int main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
 	if (argc == 1)
 	{
-		std::cout << "Usage: ./convert [literal]" << std::endl;
-		return 0;
+		std::cout << "Error: Usage " << argv[0] << " <literal>" << std::endl;
+		return (1);
 	}
-	ScalarConverter converter;
-	if (argc > 2)
+	else if (argc > 2)
 	{
 		std::cout << "Error: Too many arguments" << std::endl;
-		return 0;
+		return (1);
 	}
-	else
-		converter.convert(argv[1]);
-	return 0;
+	ScalarConverter::convert(argv[1]);
+	return (0);
 }

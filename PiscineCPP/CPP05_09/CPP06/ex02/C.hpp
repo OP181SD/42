@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 08:37:02 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/13 08:40:32 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/17 10:41:04 by yasaidi           #+#    #+#             */
+/*   Updated: 2024/01/17 10:41:10 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,7 @@
 
 #include "Base.hpp"
 
-class C : public Base {};
+class C : public Base
+{
+
+};

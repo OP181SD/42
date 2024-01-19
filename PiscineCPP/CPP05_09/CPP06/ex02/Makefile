@@ -3,21 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
+#    By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/13 08:40:37 by yassine           #+#    #+#              #
-#    Updated: 2024/01/13 08:40:58 by yassine          ###   ########.fr        #
+#    Created: 2024/01/16 18:43:43 by yasaidi           #+#    #+#              #
+#    Updated: 2024/01/17 10:46:40 by yasaidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROGRAM_NAME = Scalar
+
+PROGRAM_NAME = seralize
 
 CC = clang++
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CPPFLAGS = -Wall -Werror -Wextra  -std=c++98
 RM = rm -rf
 
-SRCS = main.cpp \
-	   Base.cpp \
+SRCS = Base.cpp \
+		main.cpp
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM_NAME)

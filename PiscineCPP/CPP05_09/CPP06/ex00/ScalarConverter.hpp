@@ -3,33 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 21:37:13 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/08 23:28:27 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/03 11:54:47 by yasaidi           #+#    #+#             */
+/*   Updated: 2024/01/18 20:23:17 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <cctype>
+#include <climits>
 #include <iomanip>
 #include <iostream>
-#include <string>
-#include <sstream>
 #include <limits>
-#include <cmath>
-#include <cstdlib>
-#include <cctype>
-#include <exception>
+#include <stdexcept>
+#include <stdlib.h>
+#include <string>
 
 class ScalarConverter
 {
-public:
+  private:
 	ScalarConverter();
-	static void convert(std::string const & literal);
-	ScalarConverter(ScalarConverter const & );
-	ScalarConverter & operator=(ScalarConverter const &);
+	ScalarConverter(const ScalarConverter &other);
+	ScalarConverter &operator=(const ScalarConverter &rhs);
 	~ScalarConverter();
+  public:
+	static void convert(const std::string &literal);
 };
-
-

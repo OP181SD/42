@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 08:34:25 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/13 08:34:27 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/16 20:23:00 by yasaidi           #+#    #+#             */
+/*   Updated: 2024/01/16 20:23:44 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 #include <iostream>
 
-struct Data
+struct	Data
 {
-
 	std::string s1;
-	int n;
+	int	n;
 };

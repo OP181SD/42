@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   Seralizer.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 09:08:29 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/13 09:10:42 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/16 18:49:24 by yasaidi           #+#    #+#             */
+/*   Updated: 2024/01/17 10:26:38 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "Serializer.hpp"
-#include "Data.hpp"
+#include "Seralizer.hpp"
 
 Serializer::Serializer()
-{}
+{
+}
 
-Serializer::Serializer(Serializer const & src)
+Serializer::Serializer(Serializer const &src)
 {
 	*this = src;
 }
 
-Serializer & Serializer::operator=(Serializer const & rhs)
+Serializer &Serializer::operator=(Serializer const &rhs)
 {
 	(void)rhs;
-	return *this;
+	return (*this);
 }
 
 Serializer::~Serializer()
-{}
+{
+}
 
-uintptr_t Serializer::serialize(Data* ptr)
+uintptr_t Serializer::serialize(Data *ptr)
 {
 	return (reinterpret_cast<uintptr_t>(ptr));
 }
 
-Data* Serializer::deserialize(uintptr_t raw)
+Data *	Serializer::deserialize(uintptr_t raw)
 {
-	return (reinterpret_cast<Data*>(raw));
+	return (reinterpret_cast<Data *>(raw));
 }

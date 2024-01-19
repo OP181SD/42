@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 08:41:05 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/13 08:43:54 by yassine          ###   ########.fr       */
+/*   Created: 2024/01/17 10:49:12 by yasaidi           #+#    #+#             */
+/*   Updated: 2024/01/17 11:07:51 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
 
 class Base
 {
