@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:02:27 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/08 16:16:02 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/13 11:29:54 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,8 @@
 #define NOVEMBER 11
 #define DECEMBER 12
 #define DAYS 1
+#define YMD 10
 
-
-struct DateInfo {
-    long year;
-    long month;
-    long day;
-};
 
 class BitcoinExchange
 {

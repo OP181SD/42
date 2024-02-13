@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:06:32 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/13 10:57:31 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/13 15:41:43 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,87 @@ size_t	count(const std::string &str, char target)
 	return (occurrences);
 }
 
-bool	isValidFormat(const std::string &line)
+bool	isValidFormat(const std::string &line, const std::string &value)
 {
+	for (size_t i = 1; i < value.size(); ++i)
+	{
+		if (!isdigit(value[i]) && value[i - 1] != '.' && value[i] != '-')
+		{
+			std::cout << BAD_INPUT << line << std::endl;
+			return (false);
+		}
+	}
 	if (count(line, '|') != 1 || count(line, ' ') != 2 || count(line, '-') > 3
 		|| count(line, '.') > 1)
 	{
 		std::cout << BAD_INPUT << line << std::endl;
 		return (false);
 	}
+	return (true);
+}
+
+bool	FormatValue(const std::string &line)
+{
+	size_t	find_pipe;
+	int		value_to_int;
+	float	value_to_float;
+
+	std::string value;
+	find_pipe = line.find("|");
+	if (find_pipe != std::string::npos)
+		value = line.substr(find_pipe + 1);
+	if (!isValidFormat(line, value))
+		return (false);
+	if (value.size() > 10)
+	{
+		std::cout << "Error: too large a number." << std::endl;
+		return (false);
+	}
+	value_to_int = std::atoi(value.c_str());
+	if (value_to_int < 0)
+	{
+		std::cout << "Error : not a positive numbers \n";
+		return (false);
+	}
+	value_to_float = std::atof(value.c_str());
+	if (value_to_float > 1000)
+	{
+		std::cout << "Error: too large a number." << std::endl;
+		return (false);
+	}
+	return (true);
+}
+
+bool	FormatYMD(const std::string &line)
+{
+	int	year;
+	int	months;
+	int	days;
+
+	std::stringstream ss(line);
+	std::string year_str;
+	std::string months_str;
+	std::string days_str;
+	if (std::getline(ss, year_str, '-') && std::getline(ss, months_str, '-')
+		&& std::getline(ss, days_str))
+	{
+		if (year_str.size() != 4 && months_str.size() == 2
+			&& days_str.size() != 2)
+		{
+			std::cout << BAD_INPUT << line << std::endl;
+			return (false);
+		}
+		std::stringstream(year_str) >> year;
+		std::stringstream(months_str) >> months;
+		std::stringstream(days_str) >> days;
+		if (!IsValidDate(year, months, days))
+		{
+			std::cout << BAD_INPUT << line << std::endl;
+			return (false);
+		}
+	}
+	if (!FormatValue(line))
+		return (false);
 	return (true);
 }
 
@@ -79,7 +152,12 @@ void	Readfile(std::ifstream &inputfile)
 		FormatFirstLine(line);
 		while (std::getline(inputfile, line))
 		{
-			
+			if (!FormatYMD(line))
+			{
+				return ;
+			}
+			else
+				std::cout << line;
 		}
 	}
 }
