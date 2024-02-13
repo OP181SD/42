@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:06:32 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/13 15:41:43 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/13 16:57:43 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ bool	isBissextile(int year)
 
 bool	IsValidDate(int year, int month, int day)
 {
-	if (year < YEAR || month < JANUARY || month > DECEMBER || day < DAYS)
+	if (year < YEAR || month < JANUARY || month > DECEMBER || day < DAYS
+		|| day > 31 || year > 2022)
 		return (false);
 	if (month == FEBRUARY)
 	{
@@ -60,15 +61,36 @@ size_t	count(const std::string &str, char target)
 	return (occurrences);
 }
 
+bool	isFloat(const std::string &str)
+{
+	int	isDot;
+	int	i;
+
+	if (str.empty() || str[0] == '.')
+		return false;
+
+	isDot = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '.')
+			isDot++;
+		if (isDot > 1)
+			return (false);
+		if ((str[i] < '0' || str[i] > '9') && str[i] != '.')
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 bool	isValidFormat(const std::string &line, const std::string &value)
 {
-	for (size_t i = 1; i < value.size(); ++i)
+	
+	if (!isFloat(value))
 	{
-		if (!isdigit(value[i]) && value[i - 1] != '.' && value[i] != '-')
-		{
-			std::cout << BAD_INPUT << line << std::endl;
-			return (false);
-		}
+		std::cout << BAD_INPUT << line << std::endl;
+		return (false);
 	}
 	if (count(line, '|') != 1 || count(line, ' ') != 2 || count(line, '-') > 3
 		|| count(line, '.') > 1)
@@ -153,9 +175,7 @@ void	Readfile(std::ifstream &inputfile)
 		while (std::getline(inputfile, line))
 		{
 			if (!FormatYMD(line))
-			{
 				return ;
-			}
 			else
 				std::cout << line;
 		}
