@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:06:32 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/13 16:57:43 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/14 11:43:23 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ bool	isBissextile(int year)
 
 bool	IsValidDate(int year, int month, int day)
 {
+
 	if (year < YEAR || month < JANUARY || month > DECEMBER || day < DAYS
 		|| day > 31 || year > 2022)
 		return (false);
@@ -66,8 +67,8 @@ bool	isFloat(const std::string &str)
 	int	isDot;
 	int	i;
 
-	if (str.empty() || str[0] == '.')
-		return false;
+	if (str.empty() || str[0] == '.' || str[str.size() - 1] == '.') 
+        return false;
 
 	isDot = 0;
 	i = 0;
@@ -87,7 +88,7 @@ bool	isFloat(const std::string &str)
 bool	isValidFormat(const std::string &line, const std::string &value)
 {
 	
-	if (!isFloat(value))
+	if (isFloat(value))
 	{
 		std::cout << BAD_INPUT << line << std::endl;
 		return (false);
@@ -130,40 +131,38 @@ bool	FormatValue(const std::string &line)
 		std::cout << "Error: too large a number." << std::endl;
 		return (false);
 	}
+	else if (value_to_float < 0)
+		return (false);
 	return (true);
 }
 
-bool	FormatYMD(const std::string &line)
+bool FormatYMD(const std::string& line) 
 {
-	int	year;
-	int	months;
-	int	days;
+    char dateComponents[3][10];
 
-	std::stringstream ss(line);
-	std::string year_str;
-	std::string months_str;
-	std::string days_str;
-	if (std::getline(ss, year_str, '-') && std::getline(ss, months_str, '-')
-		&& std::getline(ss, days_str))
+    std::stringstream ss(line);
+
+    for (int i = 0; i < 3; ++i) 
 	{
-		if (year_str.size() != 4 && months_str.size() == 2
-			&& days_str.size() != 2)
-		{
-			std::cout << BAD_INPUT << line << std::endl;
-			return (false);
-		}
-		std::stringstream(year_str) >> year;
-		std::stringstream(months_str) >> months;
-		std::stringstream(days_str) >> days;
-		if (!IsValidDate(year, months, days))
-		{
-			std::cout << BAD_INPUT << line << std::endl;
-			return (false);
-		}
-	}
-	if (!FormatValue(line))
-		return (false);
-	return (true);
+        ss.getline(dateComponents[i], 10, '-');
+        if (ss.fail() && i < 2) { 
+            std::cout << BAD_INPUT << line << std::endl;
+            return false;
+        }
+    }
+	
+    int year = std::atoi(dateComponents[0]);
+    int month = std::atoi(dateComponents[1]);
+    int day = std::atoi(dateComponents[2]);
+	
+    if (!IsValidDate(year, month, day)) {
+        std::cout << BAD_INPUT << line << std::endl;
+        return false;
+    }
+    if (!FormatValue(line)) {
+        return false;
+    }
+    return true;
 }
 
 void	Readfile(std::ifstream &inputfile)
