@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:06:32 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/14 11:43:23 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/14 16:58:52 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool	isFloat(const std::string &str)
 bool	isValidFormat(const std::string &line, const std::string &value)
 {
 	
-	if (isFloat(value))
+	if (isFloat(value) )
 	{
 		std::cout << BAD_INPUT << line << std::endl;
 		return (false);
@@ -132,37 +132,32 @@ bool	FormatValue(const std::string &line)
 		return (false);
 	}
 	else if (value_to_float < 0)
+	{
+		std::cout << "Error: not a positive number." << std::endl;
 		return (false);
+	}
 	return (true);
 }
 
-bool FormatYMD(const std::string& line) 
+bool FormatYMD(std::string & line)
 {
-    char dateComponents[3][10];
-
-    std::stringstream ss(line);
-
-    for (int i = 0; i < 3; ++i) 
+	if (line[4] != '-' || line[7] != '-' || line[10] != ' ')
 	{
-        ss.getline(dateComponents[i], 10, '-');
-        if (ss.fail() && i < 2) { 
-            std::cout << BAD_INPUT << line << std::endl;
-            return false;
-        }
-    }
-	
-    int year = std::atoi(dateComponents[0]);
-    int month = std::atoi(dateComponents[1]);
-    int day = std::atoi(dateComponents[2]);
-	
-    if (!IsValidDate(year, month, day)) {
-        std::cout << BAD_INPUT << line << std::endl;
-        return false;
-    }
-    if (!FormatValue(line)) {
-        return false;
-    }
-    return true;
+		std::cout << "Error: Invalid date format" << std::endl;
+		return (false);
+	}
+	std::string year = line.substr(0, 4);
+	std::string month = line.substr(5, 2);
+	std::string day = line.substr(8, 2);
+	if (!IsValidDate(std::atoi(year.c_str()), std::atoi(month.c_str()), std::atoi(day.c_str())))
+	{
+		std::cout << "Error: Invalid date" << std::endl;
+		return (false);
+	}
+	if (!FormatValue(line))
+		return (false);
+	return (true);
+
 }
 
 void	Readfile(std::ifstream &inputfile)

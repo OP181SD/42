@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:34:21 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/11 19:51:24 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/14 13:22:30 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,35 +101,40 @@ int	ElementPaired(const std::vector<int> &vector, size_t index)
 	return (index + 1 < vector.size());
 }
 
+std::vector<int> FordJhonson(std::vector<int> &vector) {
+    if (vector.size() <= 1)
+        return vector;
 
+    std::vector<int> maximas;
+    std::cout << "Divide Each pair : \n";
+    size_t n = vector.size();
+    for (size_t i = 0; i < n; i += 2) {
+        std::cout << "[" << vector[i] << "]";
+        if (ElementPaired(vector, i + 1)) {
+            std::cout << "[" << vector[i + 1] << "]";
+            maximas.push_back(std::max(vector[i], vector[i + 1]));
+        } else {
+            vector.push_back(vector[i]);
+        }
+        std::cout << "|";
+    }
+    std::cout << "\n";
 
-std::vector <int>	FordJhonson(std::vector<int> &vector)
-{
-	size_t	n;
-
-	if (vector.size() <= 1)
-		return ;
-	std::cout << "Divide Each pair : \n";
-	n = vector.size();
-	for (size_t i = 0; i < n; i += 2)
-	{
-		std::cout << "[" << vector[i] << "]";
-		if (ElementPaired(vector, i + 1))
-			std::cout << "[" << vector[i + 1] << "]";
-		std::cout << " |";
-	}
+    std::cout << "Determinate Maximum of each pair : \n";
+    for (size_t i = 0; i < vector.size(); i += 2) {
+        if (i + 1 < vector.size() && vector[i] < vector[i + 1]) {
+            std::swap(vector[i], vector[i + 1]);
+        }
+        std::cout << "[" << vector[i] << "]";
+    }
 	std::cout << "\n";
-	std::cout << "Determinate Maximum of each pair : \n";
-	for (size_t i = 0; i < vector.size(); i += 2)
-	{
-		if (i + 1 < vector.size() && vector[i] < vector[i + 1])
-		{
-			std::swap(vector[i], vector[i + 1]);
-		}
-		std::cout << "[" << vector[i] << "]";
-	}
-	std::vector <int> maximas;
+	
+    std::vector<int> sortedMaximas = FordJhonson(maximas);
+	
+    return sortedMaximas; 
 }
+
+
 
 void	Conversion(int argc, char *argv[], std::vector<int> &vector)
 {
