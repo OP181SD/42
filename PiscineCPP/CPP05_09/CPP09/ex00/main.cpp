@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:06:32 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/15 12:57:11 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/15 13:02:37 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ bool	FormatYMD(std::string &line)
 {
 	if (line[4] != '-' || line[7] != '-' || line[10] != ' ')
 	{
-		std::cout << "Error: Invalid date format" << std::endl;
+		std::cout << BAD_INPUT << line << std::endl;
 		return (false);
 	}
 	std::string year = line.substr(0, 4);
@@ -165,13 +165,13 @@ bool	FormatYMD(std::string &line)
 	std::string day = line.substr(8, 2);
 	if (!IsNumeric(year) || !IsNumeric(month) || !IsNumeric(day))
 	{
-		std::cout << "Error: Invalid date" << std::endl;
+		std::cout << BAD_INPUT << line << std::endl;
 		return (false);
 	}
 	if (!IsValidDate(std::atoi(year.c_str()), std::atoi(month.c_str()),
 			std::atoi(day.c_str())))
 	{
-		std::cout << "Error: Invalid date" << std::endl;
+		std::cout << BAD_INPUT << line << std::endl;
 		return (false);
 	}
 	if (!FormatValue(line))
@@ -210,16 +210,12 @@ std::string findNearestDate(const std::map<std::string, double> &bitcoinPrices,
 {
 	std::map<std::string, double>::const_iterator it = bitcoinPrices.begin();
 	std::string nearestDate = "";
-	// Parcourir la map
 	while (it != bitcoinPrices.end())
 	{
 		if (it->first <= date)
 			nearestDate = it->first;
 		else
-		{
-		
 			break ;
-		}
 		++it;
 	}
 	return (nearestDate);
@@ -249,9 +245,7 @@ void	Readfile(std::ifstream &inputfile)
 				if (!nearestDate.empty())
 				{
 					bitcoinPrice = bitcoinPrices[nearestDate];
-					std::cout << date << " => " << value << " "
-								<< "= " << bitcoinNb
-									* bitcoinPrice << std::endl;
+					std::cout << date << " => " << value << " " << "= " << bitcoinNb * bitcoinPrice << std::endl;
 				}
 				else
 					std::cout << "No nearest date found for " << date << std::endl;
