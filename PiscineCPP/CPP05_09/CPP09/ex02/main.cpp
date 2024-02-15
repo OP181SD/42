@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:34:21 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/14 20:04:34 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/15 12:54:41 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,24 +101,24 @@ int	ElementPaired(const std::vector<int> &vector, size_t index)
 	return (index + 1 < vector.size());
 }
 
-void Merge(std::vector<int>& maximas, int left, int median, int right) 
+void	Merge(std::vector<int> &maximas, int left, int median, int right)
 {
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
 	if (maximas.size() <= 1)
-		return;
+		return ;
 	std::vector<int> A;
 	std::vector<int> B;
-
 	for (int i = left; i <= median; i++)
 		A.push_back(maximas[i]);
 	for (int i = median + 1; i <= right; i++)
 		B.push_back(maximas[i]);
-
-	size_t i = 0;
-	size_t j = 0;
-	size_t k = left;
-
-	while(i < A.size() && j < B.size())
+	i = 0;
+	j = 0;
+	k = left;
+	while (i < A.size() && j < B.size())
 	{
 		if (A[i] < B[j])
 		{
@@ -138,7 +138,6 @@ void Merge(std::vector<int>& maximas, int left, int median, int right)
 		i++;
 		k++;
 	}
-
 	while (j < B.size())
 	{
 		maximas[k] = B[j];
@@ -147,70 +146,79 @@ void Merge(std::vector<int>& maximas, int left, int median, int right)
 	}
 }
 
-void RecursiveSort(std::vector<int>& maximas, int left, int right)
+void	RecursiveSort(std::vector<int> &maximas, int left, int right)
 {
-	if (maximas.size() <= 1)
-		return;
-	int median;
-	median = left + (right - left) / 2;
+	int	median;
 
+	if (maximas.size() <= 1)
+		return ;
+	median = left + (right - left) / 2;
 	if (left < right)
 	{
 		RecursiveSort(maximas, left, median);
-		RecursiveSort(maximas, median + 1, right);	
+		RecursiveSort(maximas, median + 1, right);
 	}
-		Merge(maximas, left, median, right);
+	Merge(maximas, left, median, right);
 }
 
-void insertionSort(std::vector<int>& maximas) 
+void	insertionSort(std::vector<int> &vector)
 {
-    for (size_t i = 1; i < maximas.size(); ++i) {
-        int current = maximas[i];
-        size_t j = i;
-        while (j > 0 && maximas[j - 1] > current) {
-            maximas[j] = maximas[j - 1];
-            --j;
-        }
-        maximas[j] = current;
-    }
+	int		current;
+	size_t	j;
+
+	for (size_t i = 1; i < vector.size(); ++i)
+	{
+		current = vector[i];
+		j = i;
+		while (j > 0 && vector[j - 1] > current)
+		{
+				vector[j] = vector[j - 1];
+			--j;
+		}
+		vector[j] = current;
+	}
 }
 
-std::vector<int> FordJhonson(std::vector<int> &vector) {
-    if (vector.size() <= 1)
-        return vector;
+std::vector<int> FordJhonson(std::vector<int> &vector)
+{
+	size_t	n;
 
-    std::vector<int> maximas;
-    std::cout << "Divide Each pair : \n";
-    size_t n = vector.size();
-    for (size_t i = 0; i < n; i += 2) {
-        std::cout << "[" << vector[i] << "]";
-        if (ElementPaired(vector, i + 1)) {
-            std::cout << "[" << vector[i + 1] << "]";
-            maximas.push_back(std::max(vector[i], vector[i + 1]));
-        } else {
-            vector.push_back(vector[i]);
-        }
-        std::cout << "|";
-    }
-    std::cout << "\n";
-
-    std::cout << "Determinate Maximum of each pair : \n";
-    for (size_t i = 0; i < vector.size(); i += 2) {
-        if (i + 1 < vector.size() && vector[i] < vector[i + 1]) {
-            std::swap(vector[i], vector[i + 1]);
-        }
-        std::cout << "[" << vector[i] << "]";
-    }
+	if (vector.size() <= 1)
+		return (vector);
+	std::vector<int> maximas;
+	std::cout << "Divide Each pair : \n";
+	n = vector.size();
+	for (size_t i = 0; i < n; i += 2)
+	{
+		std::cout << "[" << vector[i] << "]";
+		if (ElementPaired(vector, i + 1))
+		{
+			std::cout << "[" << vector[i + 1] << "]";
+			maximas.push_back(std::max(vector[i], vector[i + 1]));
+		}
+		else
+			vector.push_back(vector[i]);
+		std::cout << "|";
+	}
+	std::cout << "\n";
+	std::cout << "Determinate Maximum of each pair : \n";
+	for (size_t i = 0; i < vector.size(); i += 2)
+	{
+		if (i + 1 < vector.size() && vector[i] < vector[i + 1])
+		{
+			std::swap(vector[i], vector[i + 1]);
+		}
+		std::cout << "[" << vector[i] << "]";
+	}
 	RecursiveSort(maximas, 0, maximas.size() - 1);
 	std::cout << "\n";
 	std::cout << "Merge Maximums : \n";
-	for (size_t i = 0; i < maximas.size(); i++) {
+	for (size_t i = 0; i < maximas.size(); i++)
+	{
 		std::cout << "[" << maximas[i] << "]";
 	}
 	return (vector);
 }
-
-
 
 void	Conversion(int argc, char *argv[], std::vector<int> &vector)
 {

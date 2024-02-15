@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:06:32 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/14 16:58:52 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/15 12:57:11 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ bool	isBissextile(int year)
 
 bool	IsValidDate(int year, int month, int day)
 {
-
 	if (year < YEAR || month < JANUARY || month > DECEMBER || day < DAYS
 		|| day > 31 || year > 2022)
 		return (false);
@@ -67,9 +66,8 @@ bool	isFloat(const std::string &str)
 	int	isDot;
 	int	i;
 
-	if (str.empty() || str[0] == '.' || str[str.size() - 1] == '.') 
-        return false;
-
+	if (str.empty() || str[0] == '.' || str[str.size() - 1] == '.')
+		return (false);
 	isDot = 0;
 	i = 0;
 	while (str[i])
@@ -87,8 +85,7 @@ bool	isFloat(const std::string &str)
 
 bool	isValidFormat(const std::string &line, const std::string &value)
 {
-	
-	if (isFloat(value) )
+	if (isFloat(value))
 	{
 		std::cout << BAD_INPUT << line << std::endl;
 		return (false);
@@ -119,6 +116,11 @@ bool	FormatValue(const std::string &line)
 		std::cout << "Error: too large a number." << std::endl;
 		return (false);
 	}
+	if (value == " ")
+	{
+		std::cout << "Error: Invalid value" << std::endl;
+		return (false);
+	}
 	value_to_int = std::atoi(value.c_str());
 	if (value_to_int < 0)
 	{
@@ -139,7 +141,19 @@ bool	FormatValue(const std::string &line)
 	return (true);
 }
 
-bool FormatYMD(std::string & line)
+bool	IsNumeric(const std::string &str)
+{
+	for (size_t i = 0; i < str.length(); ++i)
+	{
+		if (!std::isdigit(str[i]))
+		{
+			return (false);
+		}
+	}
+	return (true);
+}
+
+bool	FormatYMD(std::string &line)
 {
 	if (line[4] != '-' || line[7] != '-' || line[10] != ' ')
 	{
@@ -149,7 +163,13 @@ bool FormatYMD(std::string & line)
 	std::string year = line.substr(0, 4);
 	std::string month = line.substr(5, 2);
 	std::string day = line.substr(8, 2);
-	if (!IsValidDate(std::atoi(year.c_str()), std::atoi(month.c_str()), std::atoi(day.c_str())))
+	if (!IsNumeric(year) || !IsNumeric(month) || !IsNumeric(day))
+	{
+		std::cout << "Error: Invalid date" << std::endl;
+		return (false);
+	}
+	if (!IsValidDate(std::atoi(year.c_str()), std::atoi(month.c_str()),
+			std::atoi(day.c_str())))
 	{
 		std::cout << "Error: Invalid date" << std::endl;
 		return (false);
@@ -157,25 +177,88 @@ bool FormatYMD(std::string & line)
 	if (!FormatValue(line))
 		return (false);
 	return (true);
-
 }
 
+void	readCSV(std::map<std::string, double> *bitcoinPrices,
+				const std::string &filename)
+{
+	double	price;
+
+	std::ifstream file(filename.c_str());
+	if (!file.is_open())
+	{
+		std::cerr << "Erreur : Impossible d'ouvrir le fichier " << filename << std::endl;
+		return ;
+	}
+	std::string line;
+	while (std::getline(file, line))
+	{
+		std::istringstream iss(line);
+		std::string dateStr, priceStr;
+		if (std::getline(iss, dateStr, ',') && std::getline(iss, priceStr))
+		{
+			std::istringstream priceStream(priceStr);
+			priceStream >> price;
+			(*bitcoinPrices)[dateStr] = price;
+		}
+	}
+	file.close();
+}
+
+std::string findNearestDate(const std::map<std::string, double> &bitcoinPrices,
+							const std::string &date)
+{
+	std::map<std::string, double>::const_iterator it = bitcoinPrices.begin();
+	std::string nearestDate = "";
+	// Parcourir la map
+	while (it != bitcoinPrices.end())
+	{
+		if (it->first <= date)
+			nearestDate = it->first;
+		else
+		{
+		
+			break ;
+		}
+		++it;
+	}
+	return (nearestDate);
+}
 void	Readfile(std::ifstream &inputfile)
 {
+	float	bitcoinNb;
+	double	bitcoinPrice;
+
 	std::string line;
+	std::map<std::string, double> bitcoinPrices;
+	std::string filename = "data.csv";
+	readCSV(&bitcoinPrices, filename);
 	if (std::getline(inputfile, line))
 	{
 		FormatFirstLine(line);
 		while (std::getline(inputfile, line))
 		{
 			if (!FormatYMD(line))
-				return ;
+				continue ;
 			else
-				std::cout << line;
+			{
+				std::string date = line.substr(0, 10);
+				std::string value = line.substr(13);
+				bitcoinNb = std::atof(value.c_str());
+				std::string nearestDate = findNearestDate(bitcoinPrices, date);
+				if (!nearestDate.empty())
+				{
+					bitcoinPrice = bitcoinPrices[nearestDate];
+					std::cout << date << " => " << value << " "
+								<< "= " << bitcoinNb
+									* bitcoinPrice << std::endl;
+				}
+				else
+					std::cout << "No nearest date found for " << date << std::endl;
+			}
 		}
 	}
 }
-
 int	Input(int argc, char **argv)
 {
 	if (argc < 2)
