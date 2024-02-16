@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:34:21 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/15 13:55:46 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/16 10:46:49 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <iomanip>
 
 int	only_digits(std::string s1)
 {
@@ -56,9 +57,9 @@ int	out_of_range(std::string s1)
 	return (0);
 }
 
-int	Parsing(std::string s1, int argc, char *argv[])
+int	Parsing(std::string s1)
 {
-	if (only_digits(s1) || is_duplicate(s1, argc, argv) || out_of_range(s1))
+	if (only_digits(s1) || out_of_range(s1))
 		return (1);
 	return (0);
 }
@@ -73,11 +74,20 @@ int	Input(int argc, char *argv[])
 	for (int i = 1; i < argc; ++i)
 	{
 		std::string s1 = argv[i];
-		if (Parsing(s1, argc, argv))
+		if (Parsing(s1))
 			return (1);
 	}
 	return (0);
 }
+
+template <typename Container>
+void printContainer(const Container& container) 
+{
+    for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
+
 
 void	Conversion(int argc, char *argv[], std::vector<int> &vector)
 {
@@ -94,26 +104,41 @@ void	Conversion(int argc, char *argv[], std::vector<int> &vector)
 	}
 }
 
-void	VectorBefore(std::vector<int> &vector)
+
+template<typename Iterator>
+void MergeSort(Iterator begin, Iterator end) 
 {
-	std::cout << "Before : \n";
-	for (size_t i = 0; i < vector.size(); i++)
-		std::cout << vector[i] << " ";
+    if (std::distance(begin, end) <= 1)
+        return;
+    Iterator middle = begin + std::distance(begin, end) / 2;
+    MergeSort(begin, middle);
+    MergeSort(middle, end);
+    std::inplace_merge(begin, middle, end);
 }
 
-void	VectorAfter(std::vector<int> &vector)
-{
-	std::cout << "After : \n";
-}
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[]) 
 {
-	if (Input(argc, argv))
-		return (1);
-	std::vector<int> vector;
-	Conversion(argc, argv, vector);
+    if (Input(argc, argv))
+        return 1;
 
-	// Vector Before
-	VectorBefore(vector);
-	return (0);
+    std::vector<int> vec;
+    Conversion(argc, argv, vec);
+    std::cout << "Before: ";
+    printContainer(vec);
+    clock_t start = clock();
+	MergeSort(vec.begin(), vec.end());
+    clock_t end = clock();
+    std::cout << "After: ";
+    printContainer(vec);
+    double elapsed_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+    std::cout << "Time to process a range of " << vec.size() << " std::vector " << elapsed_time << " us" << std::endl;
+    std::deque<int> dq(vec.begin(), vec.end());
+    start = clock();
+	MergeSort(dq.begin(), dq.end());
+    end = clock();
+    elapsed_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+    std::cout << "Time to process a range of " << dq.size() << " std::deqeu " << elapsed_time << " us" << std::endl;
+
+    return 0;
 }
