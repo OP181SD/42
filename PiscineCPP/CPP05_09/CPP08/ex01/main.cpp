@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 13:05:25 by yassine           #+#    #+#             */
-/*   Updated: 2024/01/28 11:46:00 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/16 13:11:26 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,26 @@ void	runEasyMode(void)
 void	runDemstify(void)
 {
 	int		diff;
-	Span	sp;
-
-	std::vector<int> _vec = {6, 3, 17, 9, 11};
+	
+	std::vector<int> _vec;
+	_vec.size();
+	
+	_vec.push_back(8);
+	_vec.push_back(3);
+	_vec.push_back(17);
+	_vec.push_back(9);
 	if (_vec.size() < 2)
 		throw std::logic_error("Cannot find span with less than 2 _vec.");
+		
 	std::cout << "Original vector: ";
-	for (int i = 0; i < _vec.size(); ++i)
+	for (size_t i = 0; i < _vec.size(); ++i)
 	{
 		std::cout << _vec[i] << " ";
 	}
 	std::cout << std::endl;
 	std::sort(_vec.begin(), _vec.end());
 	std::cout << "Sorted vector: ";
-	for (int i = 0; i < _vec.size(); ++i)
+	for (size_t i = 0; i < _vec.size(); ++i)
 	{
 		std::cout << _vec[i] << " ";
 	}
@@ -53,7 +59,7 @@ void	runDemstify(void)
 	std::vector<int> temp(_vec.size());
 	std::adjacent_difference(_vec.begin(), _vec.end(), temp.begin());
 	std::cout << "Differences: ";
-	for (int i = 1; i < temp.size(); ++i)
+	for (size_t i = 1; i < temp.size(); ++i)
 	{
 		std::cout << "[" << temp[i] << "]";
 		diff = std::min(diff, temp[i]);
