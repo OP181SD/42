@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:34:21 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/16 10:46:49 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/16 11:23:48 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,22 +100,41 @@ void	Conversion(int argc, char *argv[], std::vector<int> &vector)
 		string_to_long = std::atol(s1.c_str());
 		vector.push_back(string_to_long);
 		vector[i - 1] = vector.back();
-		// std::cout << vector[i - 1] << std::endl;
+
 	}
 }
 
+template<typename T>
+void insertionSort(T begin, T end) 
+{
+    for (T i = begin + 1; i != end; ++i) 
+	{
+        typename T::value_type key = *i;
+        T j = i;
+        while (j != begin && *(j - 1) > key) 
+		{
+            *j = *(j - 1);
+            --j;
+        }
+        *j = key;
+    }
+}
 
 template<typename Iterator>
-void MergeSort(Iterator begin, Iterator end) 
+void MergeInsertSort(Iterator begin, Iterator end) 
 {
     if (std::distance(begin, end) <= 1)
         return;
+    if (std::distance(begin, end) < 16) 
+	{
+        insertionSort(begin, end);
+        return;
+    }
     Iterator middle = begin + std::distance(begin, end) / 2;
-    MergeSort(begin, middle);
-    MergeSort(middle, end);
+    MergeInsertSort(begin, middle);
+    MergeInsertSort(middle, end);
     std::inplace_merge(begin, middle, end);
 }
-
 
 int main(int argc, char *argv[]) 
 {
@@ -127,7 +146,7 @@ int main(int argc, char *argv[])
     std::cout << "Before: ";
     printContainer(vec);
     clock_t start = clock();
-	MergeSort(vec.begin(), vec.end());
+	MergeInsertSort(vec.begin(), vec.end());
     clock_t end = clock();
     std::cout << "After: ";
     printContainer(vec);
@@ -135,7 +154,7 @@ int main(int argc, char *argv[])
     std::cout << "Time to process a range of " << vec.size() << " std::vector " << elapsed_time << " us" << std::endl;
     std::deque<int> dq(vec.begin(), vec.end());
     start = clock();
-	MergeSort(dq.begin(), dq.end());
+	MergeInsertSort(dq.begin(), dq.end());
     end = clock();
     elapsed_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
     std::cout << "Time to process a range of " << dq.size() << " std::deqeu " << elapsed_time << " us" << std::endl;

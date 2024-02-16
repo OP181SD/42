@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:06:32 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/15 13:02:37 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/15 15:43:17 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,8 +205,7 @@ void	readCSV(std::map<std::string, double> *bitcoinPrices,
 	file.close();
 }
 
-std::string findNearestDate(const std::map<std::string, double> &bitcoinPrices,
-							const std::string &date)
+std::string findNearestDate(const std::map<std::string, double> &bitcoinPrices, const std::string &date)
 {
 	std::map<std::string, double>::const_iterator it = bitcoinPrices.begin();
 	std::string nearestDate = "";
