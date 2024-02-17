@@ -5,65 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 13:04:00 by yassine           #+#    #+#             */
-/*   Updated: 2024/02/16 13:11:50 by yassine          ###   ########.fr       */
+/*   Created: 2024/02/17 09:25:50 by yassine           #+#    #+#             */
+/*   Updated: 2024/02/17 18:16:56 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span()
-	: _n(0)
+Span::Span() : _n(0)
 {
 }
 
-Span::Span(unsigned int n)
-	: _n(n)
+Span::Span(unsigned int n) : _n(n)
 {
 }
 
-Span::Span(Span const &src)
+Span::Span(const Span & other) : _n(other._n)
 {
-	*this = src;
+}
+
+Span &Span::operator=(const Span &other)
+{
+	if (this != &other)
+		_n = other._n;
+	return *this;
 }
 
 Span::~Span()
 {
 }
 
-void Span::addNumber(int n)
+
+void Span::addNumber(unsigned int n)
 {
-	if (_vec.size() < _n)
-		_vec.push_back(n);
+	if (_v.size() < _n)
+		_v.push_back(n);
 	else
-		throw std::exception();
+		throw Span::SpanException();		
 }
 
-int Span::shortestSpan()
+void Span::shortestSpan()
 {
-	int	diff;
+   if (_v.size() < 2)
+		throw Span::NoEnoughValue();
+    SpanPrint();
+    std::sort(_v.begin(), _v.end());
+    SpanPrintSort();
 
-	if (_vec.size() < 2)
-		throw std::logic_error("Cannot find span with less than 2 _vec.");
-	std::sort(_vec.begin(), _vec.end());
-	diff = std::numeric_limits<int>::max();
-	std::vector<int> temp(_vec.size());
-	std::adjacent_difference(_vec.begin(), _vec.end(), temp.begin());
-	for (size_t i = 1; i < temp.size(); ++i)
-	{
-		diff = std::min(diff, temp[i]);
-	}
-	return (diff);
-}
-
-int Span::longestSpan()
-{
-    if (_vec.size() < 2)
-        throw std::logic_error("Cannot find span with less than 2 elements.");
-    std::sort(_vec.begin(), _vec.end());
-
-    int max_value = _vec.back();
-    int min_value = _vec.front(); 
+    std::vector<int> diff(_v.size());
+    std::adjacent_difference(_v.begin(), _v.end(), diff.begin());
+    for (size_t i = 0; i < _v.size(); i++)
+    {
+        std::cout << "[" << diff[i] << "]";
+    }
 	
-    return (max_value - min_value); 
+	int min = *std::min_element(diff.begin(), diff.end());
+	
+	std::cout << "\n";
+	std::cout << _GOLD << "Shortest Span: " << min << _END << std::endl;
 }
+
+void Span::longestSpan()
+{
+	if (_v.size() < 2)
+		throw Span::NoEnoughValue();
+	SpanPrint();
+	std::sort(_v.begin(), _v.end());
+	SpanPrintSort();	
+	int max = _v.back() - _v.front();
+	std::cout << _GOLD << "Longest Span: " << max << _END << std::endl;
+}
+
+

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+         #
+#    By: yassine <yassine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/29 09:05:31 by yasaidi           #+#    #+#              #
-#    Updated: 2024/02/08 09:54:44 by yasaidi          ###   ########.fr        #
+#    Created: 2024/02/17 09:23:08 by yassine           #+#    #+#              #
+#    Updated: 2024/02/17 10:28:31 by yassine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CPPFLAGS = -Wall -Werror -Wextra  -std=c++98
 RM = rm -rf
 
 SRCS = main.cpp \
-       Span.cpp 
+	   Span.cpp 
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(PROGRAM_NAME)

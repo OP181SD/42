@@ -5,116 +5,177 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 13:05:25 by yassine           #+#    #+#             */
-/*   Updated: 2024/02/16 13:11:26 by yassine          ###   ########.fr       */
+/*   Created: 2024/02/17 09:23:15 by yassine           #+#    #+#             */
+/*   Updated: 2024/02/17 18:29:39 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <cstdlib>
-#include <iostream>
 
-void	runEasyMode(void)
+const char * Span::SpanException::what() const throw()
 {
-	Span	sp;
-
-	sp = Span(5);
-	sp.addNumber(6);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
-	std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+	return ("Attempted to add a number to a full Span.");
 }
 
-void	runDemstify(void)
+const char * Span::NoEnoughValue::what() const throw()
 {
-	int		diff;
-	
-	std::vector<int> _vec;
-	_vec.size();
-	
-	_vec.push_back(8);
-	_vec.push_back(3);
-	_vec.push_back(17);
-	_vec.push_back(9);
-	if (_vec.size() < 2)
-		throw std::logic_error("Cannot find span with less than 2 _vec.");
-		
-	std::cout << "Original vector: ";
-	for (size_t i = 0; i < _vec.size(); ++i)
-	{
-		std::cout << _vec[i] << " ";
-	}
-	std::cout << std::endl;
-	std::sort(_vec.begin(), _vec.end());
-	std::cout << "Sorted vector: ";
-	for (size_t i = 0; i < _vec.size(); ++i)
-	{
-		std::cout << _vec[i] << " ";
-	}
-	std::cout << std::endl;
-	diff = std::numeric_limits<int>::max();
-	std::vector<int> temp(_vec.size());
-	std::adjacent_difference(_vec.begin(), _vec.end(), temp.begin());
-	std::cout << "Differences: ";
-	for (size_t i = 1; i < temp.size(); ++i)
-	{
-		std::cout << "[" << temp[i] << "]";
-		diff = std::min(diff, temp[i]);
-	}
-	std::cout << std::endl;
-	std::cout << diff << std::endl;
+	return ("Not enough numbers to calculate the span.");
 }
 
-void	runHardMode(void)
+void Span::SpanPrint()
 {
-	Span	sp;
+	std::cout << _AQUAMARINE;
+	std::cout << "Element Of the Span \n";
+	std::cout << _CYAN;
+	for (size_t i = 0; i < _v.size(); i++)
+	{
+		std::cout << "[" <<  _v[i] << "]";
+	}	
 
-	sp = Span(10000);
-	srand(time(NULL));
-	for (int i = 0; i < 10000; ++i)
+	std::cout << RESET_COLOR;
+
+	std::cout << "\n";
+}
+
+void Span::SpanPrintSort()
+{
+	std::cout << _FOREST_GREEN;
+	std::cout << "Element Of the Span Sorted \n";
+	std::cout << _LAGOON;
+	for (size_t i = 0; i < _v.size(); i++)
 	{
-		sp.addNumber(rand() % 10000);
-	}
-	try
-	{
-		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "[" <<  _v[i] << "]";
+	}	
+	std::cout << RESET_COLOR;
+
+	std::cout << "\n";
+}
+
+// Test Functions
+void testSpanWithLessThanTwoNumbers() {
+    std::cout << _RED << "Trying to calculate the shortest span when there are less than 2 numbers..." << _END << std::endl;
+    try {
+        Span sp(4);
+        sp.shortestSpan();
+    } catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+}
+
+void testWhenSpanIsFull() {
+    std::cout << _PURPLE << "Trying to add a number when the Span is full..." << _END << std::endl;
+    try {
+        Span sp(4);
+        sp.addNumber(3);
+        sp.addNumber(17);
+        sp.addNumber(9);
+        sp.addNumber(11);
+        sp.addNumber(11);
+        sp.shortestSpan();
+    } catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+}
+
+// Shortest Span
+void testShortestSpan() {
+    std::cout << _LILAC << "Calculating shortest span..." << _END << std::endl;
+    try {
+		Span sp(5);
+        sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+        sp.shortestSpan();
+    } catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+}
+
+// Longest Span
+void testLongestSpan() {
+	std::cout << _SALMON << "Calculating longest span..." << _END << std::endl;
+	try {
+		Span sp(5);
+        sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		sp.longestSpan();
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
 	}
 }
 
-int	main(int argc, char **argv)
-{
-	Span	s;
 
-	if (argc == 1)
-	{
-		std::cerr << "Usage: " << argv[0] << " [Easy|Hard|Demystify]" << std::endl;
-		return (1);
-	}
-	std::string mode = argv[1];
-	if (mode != "Easy" && mode != "Hard" && mode != "Demystify")
-	{
-		std::cout << "Please enter a valid mode" << std::endl;
-		return (1);
-	}
-	if (mode == "Easy")
-	{
-		runEasyMode();
-	}
-	else if (mode == "Hard")
-	{
-		runHardMode();
-	}
-	else if (mode == "Demystify")
-	{
-		runDemstify();
-	}
-	return (0);
+void runHardMode(void)
+{
+    Span sp(100);
+    srand(time(NULL));
+    for (int i = 0; i < 100; ++i)
+    {
+        sp.addNumber(rand() % 100);
+    }
+    try
+    {
+        char choice;
+      	std::cout << _RED << _BOLD << _ITALIC << _UNDERLINE << _BLINK << "Warning: Are you sure you want to run HardMode? (s) for ShortestSpan or (l) for LongestSpan :" << _END << std::endl;
+        std::cin >> choice;
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        if (choice == 's')
+        {
+            std::cout << "Shortest span: " << std::endl;
+            sp.shortestSpan();
+        }
+        else if (choice == 'l')
+        {
+            std::cout << "Longest span: " << std::endl;
+            sp.longestSpan();
+        }
+        else
+        {
+            std::cout << "Invalid input. Please enter 's' for ShortestSpan or 'l' for LongestSpan." << std::endl;
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
+
+int main(int argc, char **argv)
+{
+    if (argc == 1)
+    {
+       	std::cout << _RED << _BOLD << _ITALIC << "Usage: ./Span [Type Something...]" << _END << std::endl;
+        return 1;
+    }
+    std::cout << _YELLOW << _BOLD << "Welcome to - Span" << _END << std::endl;
+    std::cout << _CYAN << "====================" << _END << std::endl;
+   std::cout << _YELLOW << "Please Type : " << _END << _BOLD << _UNDERLINE << _CYAN << "ShortestSpan" << _END << ", " << _BOLD << _UNDERLINE << _MAGENTA << "LongestSpan" << _END << ", " << _BOLD << _UNDERLINE << _RED << "HardMode" << _END << std::endl;
+    std::cout << _CYAN << "====================" << _END << std::endl;
+    if (argc == 2)
+    {
+        std::string ST = argv[1];
+        if (ST == "ShortestSpan")
+        {
+            testSpanWithLessThanTwoNumbers();
+			testWhenSpanIsFull();
+            testShortestSpan();
+        }
+		else if (ST == "LongestSpan")
+		{
+			testSpanWithLessThanTwoNumbers();
+			testWhenSpanIsFull();
+			testLongestSpan();
+		}
+		else if (ST == "HardMode")
+		{
+			runHardMode();
+		}
+    }
+    return 0;
 }
