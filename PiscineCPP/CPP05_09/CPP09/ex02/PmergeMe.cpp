@@ -91,7 +91,6 @@ void PmergeMe::MergeInsertionSort()
 		std::cout << "Pair " << i << ": [" << pairs[i].first << ", " << pairs[i].second << "]" << std::endl;
 	}
 	MergeSortPairs(pairs);
-	// Créer le vecteur S en insérant les éléments de la séquence triée
 	std::vector<int> S;
 	for (size_t i = 0; i < pairs.size(); i++)
 	{
