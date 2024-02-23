@@ -6,7 +6,7 @@
 /*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:34:34 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/15 19:26:18 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/23 10:34:50 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ class PmergeMe
 	PmergeMe();
 	PmergeMe(const PmergeMe &src);
 	PmergeMe &operator=(const PmergeMe &src);
+	void	Conversion(int argc, char *argv[]);
+	void MergeInsertionSort();
 	~PmergeMe();
 };
