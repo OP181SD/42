@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:34:34 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/23 10:34:50 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:28:36 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ class PmergeMe
 	PmergeMe();
 	PmergeMe(const PmergeMe &src);
 	PmergeMe &operator=(const PmergeMe &src);
-	void	Conversion(int argc, char *argv[]);
+	int	Conversion(int argc, char *argv[]);
+	std::vector<int> getVector();
 	void MergeInsertionSort();
 	~PmergeMe();
 };

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 09:23:15 by yassine           #+#    #+#             */
-/*   Updated: 2024/02/17 18:29:39 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/21 10:16:37 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,11 @@ void testLongestSpan() {
 
 void runHardMode(void)
 {
-    Span sp(100);
+    Span sp(10000);
     srand(time(NULL));
-    for (int i = 0; i < 100; ++i)
+    for (int i = 0; i < 10000; ++i)
     {
-        sp.addNumber(rand() % 100);
+        sp.addNumber(rand() % std::numeric_limits<unsigned int>::max() + 1 );
     }
     try
     {

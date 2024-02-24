@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:35:42 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/23 16:47:07 by yassine          ###   ########.fr       */
+/*   Updated: 2024/02/24 11:18:53 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,42 @@ void printContainer(const Container& container)
 }
 
 
-size_t binarySearch(const std::vector<int>& vec, int value)
-{
-	
+size_t binarySearch(const std::vector<int>& vec, int value) {
+    // Si vec est vide, retourne 0
+    if (vec.empty())
+        return 0;
+
+    // Si la valeur est inférieure au premier élément, retourne 0
+    if (value < vec.front())
+        return 0;
+    size_t left = 0;
+    size_t right = vec.size();
+
+    while (left < right) {
+        size_t mid = left + (right - left) / 2;
+        if (vec[mid] == value)
+            return mid;
+        else if (value < vec[mid])
+            right = mid;
+        else
+            left = mid + 1;
+    }
+    return left;
 }
 
 void PmergeMe::MergeInsertionSort()
 {
-    std::cout << "Determine each pair of the array: " << std::endl;
-    size_t size = _vector.size();
+	 size_t size = _vector.size();
     size_t end_index = size - (size % 2); 
     std::vector<std::pair<int, int> > pairs;
-    for (size_t i = 0; i < end_index; i += 2)
-    {
+    
+    for (size_t i = 0; i < end_index; i = i + 2)
         pairs.push_back(std::make_pair(_vector[i], _vector[i + 1]));
-        std::cout << "Pair " << i / 2 << ": [" << _vector[i] << ", " << _vector[i + 1] << "]" << std::endl;
-    }
     if (size % 2 != 0)
-        std::cout << "Unpaired element: [" << _vector[size - 1] << "]" << std::endl;
-	std::cout << "Sort each pair: " << std::endl;
+	{
+		std::cout << "Unpaired element: [" << _vector[size - 1] << "]" << std::endl;
+	}
+	// std::cout << "Sort each pair: " << std::endl;
 	for (size_t i = 0; i < pairs.size(); i++)
 	{
 		if (pairs[i].first > pairs[i].second)
@@ -88,7 +105,7 @@ void PmergeMe::MergeInsertionSort()
 			pairs[i].first = pairs[i].second;
 			pairs[i].second = tmp;
 		}
-		std::cout << "Pair " << i << ": [" << pairs[i].first << ", " << pairs[i].second << "]" << std::endl;
+		// std::cout << "Pair " << i << ": [" << pairs[i].first << ", " << pairs[i].second << "]" << std::endl;
 	}
 	MergeSortPairs(pairs);
 	std::vector<int> S;
@@ -97,9 +114,16 @@ void PmergeMe::MergeInsertionSort()
 		S.push_back(pairs[i].first);
 		S.push_back(pairs[i].second);
 	}
-	std::cout << "Merge the sorted pairs: " << std::endl;
-	printContainer(S);
+	// std::cout << "Merge the sorted pairs: " << std::endl;
+	// printContainer(S);
 	S.insert(S.begin(), _vector[size - 1]);
-	std::cout << "Merge the sorted pairs with the unpaired elements: " << std::endl;
-	printContainer(S);
+	// std::cout << "Sort the merged array: " << std::endl;
+	std::vector<int> sorted;
+	for (size_t i = 0; i < S.size(); i++) 
+	{
+    size_t index = binarySearch(sorted, S[i]);
+    if (index == sorted.size() || sorted[index] != S[i])
+        sorted.insert(sorted.begin() + index, S[i]);
+	}
+	_vector = sorted;
 }
