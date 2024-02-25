@@ -6,13 +6,12 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:34:21 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/25 15:44:58 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/25 15:42:16 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iomanip>
-
 
 bool	has_duplicate(std::string s1, int argc, char *argv[])
 {
@@ -30,7 +29,6 @@ bool	has_duplicate(std::string s1, int argc, char *argv[])
 	return (false);
 }
 
-
 int	Input(int argc, char *argv[])
 {
 	if (argc == 1)
@@ -38,19 +36,22 @@ int	Input(int argc, char *argv[])
 		std::cout << "Usage: " << argv[0] << std::endl;
 		return (1);
 	}
-	if (argc <= 3)
+	if (argc == 2)
 	{
 		std::cout << "Error: Not enough elements" << std::endl;
 		return (1);
 	}
-	for (int i = 1; i < argc; ++i)
+	if (argc > 2)
 	{
-		for (int j = 0; argv[i][j] != '\0'; ++j)
+		for (int i = 1; i < argc; ++i)
 		{
-			if (!std::isdigit(argv[i][j]) && argv[i][j] != '-')
+			for (int j = 0; argv[i][j] != '\0'; ++j)
 			{
-				std::cout << "Error: Not a number" << std::endl;
-				return (1);
+				if (!std::isdigit(argv[i][j]) && argv[i][j] != '-')
+				{
+					std::cout << "Error: Not a number" << std::endl;
+					return (1);
+				}
 			}
 		}
 	}
@@ -87,7 +88,6 @@ int PmergeMe::Conversion(int argc, char *argv[])
 		std::cout << "Error:" << std::endl;
 		return (1);
 	}
-
 	return (0);
 }
 
@@ -99,7 +99,7 @@ std::vector<int> PmergeMe::getVector()
 int	main(int argc, char *argv[])
 {
 	PmergeMe p;
-	
+
 	if (Input(argc, argv))
 		return (1);
 	if (p.Conversion(argc, argv))

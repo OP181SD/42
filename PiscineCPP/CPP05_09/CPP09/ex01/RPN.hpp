@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:34:16 by yassine           #+#    #+#             */
-/*   Updated: 2024/02/03 10:49:07 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/24 13:55:35 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ class RPN
 		const char *what() const throw();
 	};
 	class DivisionByZeroException : public std::exception
+	{
+		public:
+		const char *what() const throw();
+	};
+	class ErrorLen : public std::exception
 	{
 		public:
 		const char *what() const throw();

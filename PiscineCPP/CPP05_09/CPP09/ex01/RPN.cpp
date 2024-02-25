@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:31:35 by yassine           #+#    #+#             */
-/*   Updated: 2024/02/05 12:01:49 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/24 13:58:09 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ const char *RPN::InvalidExpressionException::what() const throw()
 	return ("Error: invalid character");
 }
 
+const char *RPN::ErrorLen::what() const throw()
+{
+	return ("Error on your list !");
+}
+
 int RPN::_RPN(std::string str)
 {
 	int	num;
@@ -59,10 +64,7 @@ int RPN::_RPN(std::string str)
 				|| str[i] == MULTIPLICATION || str[i] == DIVISION)
 		{
 			if (_stack.size() < 2)
-			{
-				std::cout << "Error: not enough numbers in the stack" << std::endl;
-				exit(1);
-			}
+				throw RPN::ErrorLen();
 			rhs = _stack.top();
 			_stack.pop();
 			lhs = _stack.top();
@@ -76,21 +78,16 @@ int RPN::_RPN(std::string str)
 			else if (str[i] == DIVISION)
 			{
 				if (rhs == 0)
-				{
-					std::cout << "Error: division by zero" << std::endl;
-					exit(1);
-				}
+					throw RPN::DivisionByZeroException();
 				_stack.push(lhs / rhs);
 			}
 		}
 		else if (str[i] != ' ')
 		{
-			std::cout << "Error: " << std::endl;
-			exit(1);
+			throw RPN::InvalidExpressionException();
 		}
 	}
 	if (_stack.size() == 1)
 		return (_stack.top());
-	std::cout << "Error on your list !" << std::endl;
-	exit(1);
+	throw RPN::ErrorLen();
 }

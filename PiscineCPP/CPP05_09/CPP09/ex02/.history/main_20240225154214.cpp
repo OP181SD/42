@@ -6,7 +6,7 @@
 /*   By: yasaidi <yasaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:34:21 by yasaidi           #+#    #+#             */
-/*   Updated: 2024/02/25 15:44:58 by yasaidi          ###   ########.fr       */
+/*   Updated: 2024/02/25 15:42:14 by yasaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,16 @@ int	Input(int argc, char *argv[])
 		std::cout << "Usage: " << argv[0] << std::endl;
 		return (1);
 	}
-	if (argc <= 3)
+	if (argc == 2)
 	{
 		std::cout << "Error: Not enough elements" << std::endl;
 		return (1);
 	}
-	for (int i = 1; i < argc; ++i)
+	if (argc > 2)
 	{
-		for (int j = 0; argv[i][j] != '\0'; ++j)
-		{
-			if (!std::isdigit(argv[i][j]) && argv[i][j] != '-')
-			{
-				std::cout << "Error: Not a number" << std::endl;
-				return (1);
-			}
-		}
+		
 	}
+	
 	return (0);
 }
 
